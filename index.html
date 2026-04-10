@@ -203,6 +203,7 @@
   <a data-tab="color">Color</a>
   <a data-tab="shadow">Shadow</a>
   <a data-tab="radius">Radius</a>
+  <a data-tab="stroke">Stroke</a>
 </nav>
 
 <!-- ============================================================ -->
@@ -213,10 +214,10 @@
 <div class="hero">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
-  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), and radius system (7 tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
+  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), radius system (7 tokens), and stroke system (2 width tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
   <div class="hero-meta">
-    <span><strong>Input:</strong> wiom_typography_foundation.html + index.html (color)</span>
-    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius tokens</span>
+    <span><strong>Input:</strong> wiom_typography_foundation.html + index.html (color) + stroke foundation</span>
+    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius + Stroke tokens</span>
     <span><strong>Platform:</strong> Mobile (Android), Bilingual (EN + HI)</span>
     <span><strong>Date:</strong> April 2026</span>
     <span><strong>Agent:</strong> System Lens v1.0</span>
@@ -229,7 +230,7 @@
     <span class="verdict-label">Overall Conformance</span>
     <span class="verdict-result">Conditional Pass</span>
   </div>
-  <div class="verdict-desc">Strong foundation across typography, color, shadow, and radius &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, and radius system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system.</div>
+  <div class="verdict-desc">Strong foundation across typography, color, shadow, radius, and stroke &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, radius system, and stroke system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system. Stroke is the most comprehensive border foundation in the benchmark set &mdash; 2 width tokens with clear passive/interactive split, "filled = no border" rule, 11 anti-patterns, Android-specific focus ring guidance, and "shadow vs border: never both" rule are all unique strengths. Only missing dark mode border colors and border transition timing.</div>
 </div>
 
 <!-- CHECKLIST SUMMARY -->
@@ -283,8 +284,22 @@
       <tr><td class="area-name">Corner Type</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; standard circular, not squircle, documented</td></tr>
       <tr><td class="area-name">Responsive Radius</td><td><span class="v v-miss">MISSING</span></td><td>No breakpoint/screen-size adaptation for radius</td></tr>
       <tr><td class="area-name">Radius for Dark Mode</td><td><span class="v v-gap">GAP</span></td><td>No documentation on whether radius changes in dark mode (typically doesn't, but should be stated)</td></tr>
+      <!-- Stroke -->
+      <tr><td class="area-name">Stroke Widths</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 2 tokens (1px passive, 2px interactive), clear separation</td></tr>
+      <tr><td class="area-name">Border Colors</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 4 tokens + state colors, decision tree documented</td></tr>
+      <tr><td class="area-name">Filled = No Border</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; rule documented for all filled components</td></tr>
+      <tr><td class="area-name">Stroke Position</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; always inside, cross-platform implementation documented</td></tr>
+      <tr><td class="area-name">Divider Guidelines</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; inset/full-bleed rules, when to use/skip documented</td></tr>
+      <tr><td class="area-name">Focus Ring (A11y)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; Android-specific, TalkBack/keyboard only, WCAG 2.4.7 compliant</td></tr>
+      <tr><td class="area-name">Border Style</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; solid only, dashed exceptions documented</td></tr>
+      <tr><td class="area-name">Component Stroke Map</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; every component categorized (border/no-border/filled)</td></tr>
+      <tr><td class="area-name">State Transitions</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; all states documented with width + color</td></tr>
+      <tr><td class="area-name">Shadow vs Border</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; "never both" rule explicitly documented</td></tr>
+      <tr><td class="area-name">Anti-Patterns (stroke)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 11 guardrails documented</td></tr>
+      <tr><td class="area-name">Dark Mode Borders</td><td><span class="v v-miss">MISSING</span></td><td>No dark mode border color adjustments documented</td></tr>
+      <tr><td class="area-name">Border Animation</td><td><span class="v v-gap">GAP</span></td><td>No transition timing for state changes (rest&rarr;error, rest&rarr;focus)</td></tr>
       <!-- Overall -->
-      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW priority items</td></tr>
+      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW &middot; Stroke: 1 HIGH, 1 LOW priority items</td></tr>
     </tbody>
   </table>
 </div>
@@ -329,6 +344,14 @@
       <div class="audit-content">7 radius tokens: radius-none (0px), radius-tiny (4px), radius-small (8px), radius-medium (12px), radius-large (16px), radius-xlarge (24px), radius-full (9999px). All on 4px grid, aliased to spacing primitives.</div>
     </div>
     <div class="audit-row">
+      <div class="audit-label">Stroke Input</div>
+      <div class="audit-content">Stroke &amp; border foundation document &mdash; 2 width tokens (1px/2px), 4 border color tokens (from wiom-color), filled=no border rule, stroke position, divider guidelines, focus ring (Android a11y), border style, component stroke map, state transitions, shadow vs border, 11 anti-patterns, industry benchmark. Platform: Android (Compose).</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Stroke Tokens Found</div>
+      <div class="audit-content">2 stroke width tokens: stroke-small (1px) for passive containers, stroke-medium (2px) for interactive/active/error states. 4 border color tokens referenced from wiom-color: border.subtle, border.default, border.strong, border.brand.</div>
+    </div>
+    <div class="audit-row">
       <div class="audit-label">Not Reviewed (not provided)</div>
       <div class="audit-content">Spacing tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
     </div>
@@ -339,11 +362,11 @@
 <div class="footer">
   <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
   <div class="footer-tags">
-    <span class="footer-tag">64 tokens audited</span>
-    <span class="footer-tag">23 PASS</span>
-    <span class="footer-tag">6 GAP</span>
-    <span class="footer-tag">9 MISSING</span>
-    <span class="footer-tag">23 actions</span>
+    <span class="footer-tag">66 tokens audited</span>
+    <span class="footer-tag">34 PASS</span>
+    <span class="footer-tag">7 GAP</span>
+    <span class="footer-tag">10 MISSING</span>
+    <span class="footer-tag">25 actions</span>
     <span class="footer-tag">April 2026</span>
   </div>
 </div>
@@ -1464,6 +1487,323 @@
 </div>
 
 </div><!-- /tab-panel radius -->
+
+<!-- ============================================================ -->
+<!-- TAB: STROKE                                                   -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="stroke">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-title">Stroke &amp; Border Token Audit</div>
+    <div class="section-desc">Each area of the stroke and border system reviewed against world-class benchmarks.</div>
+  </div>
+
+  <!-- Stroke Width Tokens -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Stroke Width Tokens</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">2 tokens only. <strong>1px (<code>stroke-small</code>)</strong> for passive containers &mdash; cards, dividers, inputs at rest. <strong>2px (<code>stroke-medium</code>)</strong> for interactive emphasis &mdash; outlined buttons, checkbox/radio, selected/active/error states, focus rings. Clear semantic separation: passive vs interactive.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The 2-token system is elegantly minimal. The semantic split (passive vs interactive) means developers never question which width to use. The rule is binary: "Is it interactive/active/error? &rarr; 2px. Everything else &rarr; 1px."</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 uses 1dp default, 3px focus. Carbon uses 1px/2px. Atlassian uses 1px/2px. Stripe uses 1px/2px. Wiom aligns with industry consensus. The semantic naming (small/medium) is cleaner than most.</div>
+
+    <!-- Stroke Token Reference -->
+    <table class="token-ref" style="margin-top:20px">
+      <thead><tr><th>Token</th><th>Value</th><th>Use Cases</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">stroke-small</td><td class="token-val">1px</td><td>Cards, dividers, input at rest</td></tr>
+        <tr><td class="token-name">stroke-medium</td><td class="token-val">2px</td><td>Outlined buttons, checkbox/radio, selected/active/error states, focus rings, active inputs, active tabs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Border Colors -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Border Colors</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">4 border tokens (<code>subtle</code>, <code>default</code>, <code>strong</code>, <code>brand</code>) + state colors from semantic families. 5-step color decision tree: error/success/info &rarr; filled state &rarr; focus &rarr; small control &rarr; default.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Colors come from wiom-color (single source of truth, not redefined here). The decision tree eliminates color ambiguity. The separation of structure (this foundation) from color (wiom-color) is architecturally clean.</div>
+    <div class="bench"><strong>Benchmark:</strong> Matches Carbon's approach of referencing color tokens. Better than systems that redefine border colors separately.</div>
+
+    <!-- Border Color Token Reference -->
+    <table class="token-ref" style="margin-top:20px">
+      <thead><tr><th>Token</th><th>Value</th><th>Use Cases</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">color.border.subtle</td><td class="token-val">#E8E4F0</td><td>Default borders, cards, inputs at rest</td></tr>
+        <tr><td class="token-name">color.border.default</td><td class="token-val">#D7D3E0</td><td>Dividers, separators, hover borders</td></tr>
+        <tr><td class="token-name">color.border.strong</td><td class="token-val">#665E75</td><td>Small controls, checkbox/radio unchecked</td></tr>
+        <tr><td class="token-name">color.border.brand</td><td class="token-val">#FFB2E4</td><td>Focus rings, brand-accent</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Filled = No Border -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Filled = No Border</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Explicit rule: when a component transitions to filled state, border is removed. Documented for: checkbox (on), radio (on), toggle (on), chip (selected), button (filled). Tab active is documented exception (2px bottom accent bar, not full border).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> This rule is stated in most systems but rarely documented this explicitly with component-by-component mapping. The "fill IS the boundary" principle is clean.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3, Carbon, Atlassian all follow this rule implicitly. Wiom's explicit documentation is above benchmark.</div>
+  </div>
+
+  <!-- Stroke Position -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Stroke Position</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Always inside. Documented for Figma (stroke align: inside), Compose (<code>Modifier.border()</code> inside by default), CSS (<code>box-sizing: border-box</code> + <code>border</code>). Benefits: predictable sizing, no layout shift, clean alignment.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Cross-platform implementation guidance is valuable. Most systems state "inside" but don't show platform equivalents.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 and Carbon use inside. Atlassian uses outside. Wiom aligns with majority.</div>
+  </div>
+
+  <!-- Divider Guidelines -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Divider Guidelines</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">1px, <code>color.border.default</code>, solid. Inside cards: always inset to respect padding (with visual before/after). Full-bleed vs inset guidance for screen level vs list level. When to use divider (between list items, below headers, between form sections, in tables) vs when to skip (between cards, 24px+ spacing, clear visual grouping, between chips).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The visual example of wrong (full-bleed inside card) vs right (inset to padding) is excellent. The "when to use vs when to skip" table prevents divider overuse.</div>
+    <div class="bench"><strong>Benchmark:</strong> Polaris and Carbon have divider guidance. MD3 documents dividers. Wiom's inset rule and skip guidance is more specific than most.</div>
+  </div>
+
+  <!-- Focus Ring (Accessibility) -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Focus Ring (Accessibility)</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Android-specific: focus rings only appear for TalkBack, external keyboard, Switch Access, D-pad. Touch = ripple, not ring. Spec: 2px width, 2px offset outside, <code>border.brand</code> (<code>#FFB2E4</code>). Destructive: <code>negative.soft</code> (<code>#FFB3B9</code>). Radius = component radius + 2px. WCAG 2.4.7 compliant.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The Android-specific clarity is excellent. The table showing which input methods trigger focus rings (touch=no, TalkBack=yes, keyboard=yes, switch=yes, D-pad=yes) prevents over-implementation. The +2px radius offset is a detail most systems miss.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 uses 3px focus ring. Carbon uses 2px. Atlassian uses 2px. Wiom's 2px aligns with majority. The Android-specific input method table is unique.</div>
+  </div>
+
+  <!-- Border Style -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Border Style</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Solid for all production borders. Dashed reserved for empty states and upload/drop zones only. Dotted explicitly never used ("not in the CA design language").</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Clean rule with clear exception handling.</div>
+  </div>
+
+  <!-- Component Stroke Map -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Component Stroke Map</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">3 categories:<br>
+        <strong>&bull; Has border:</strong> card flat, input rest/active/error, button outlined, checkbox/radio off, toggle off, chip default, avatar, divider, empty state dashed<br>
+        <strong>&bull; Filled = no border:</strong> checkbox/radio/toggle on, chip selected, button filled, badge, tab active<br>
+        <strong>&bull; No border / elevated:</strong> card elevated, bottom sheet, dialog/modal, snackbar, progress bar
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Exhaustive. Every component categorized. The 3-category system (border/filled/elevated) is clear.</div>
+  </div>
+
+  <!-- State Transitions -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">State Transitions</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Full state matrix: rest (1px subtle), pressed (1px subtle + ripple, no border change), TalkBack focus (2px brand), selected outlined (2px <code>brand.primary</code>), selected filled (no border), error (2px <code>negative.primary</code>, persistent), disabled (1px subtle @ 40%).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The "pressed = ripple, no border change" is an important Android-specific detail.</div>
+  </div>
+
+  <!-- Shadow vs Border -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Shadow vs Border</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Explicit "never both" rule. Flat = border, elevated = shadow. Visual showing correct (flat with border), correct (elevated with shadow), wrong (both together creating "double-edge artifact").</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> This is often left implicit in design systems. The explicit rule + visual anti-pattern is above benchmark.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 implies this. Carbon implies this. Wiom is the only one in the benchmark set that states it explicitly.</div>
+  </div>
+
+  <!-- Anti-Patterns -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Anti-Patterns</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">11 guardrails:<br>
+        <strong>1.</strong> Border on filled components<br>
+        <strong>2.</strong> Full-bleed divider inside cards<br>
+        <strong>3.</strong> Border + shadow<br>
+        <strong>4.</strong> Double borders<br>
+        <strong>5.</strong> Mixing colors at same level<br>
+        <strong>6.</strong> Raw hex values<br>
+        <strong>7.</strong> Removing focus for a11y<br>
+        <strong>8.</strong> Border radius mismatch<br>
+        <strong>9.</strong> Focus ring radius wrong (must be component radius + 2px)<br>
+        <strong>10.</strong> Dashed on active components<br>
+        <strong>11.</strong> Border tokens for fills
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> 11 anti-patterns is exceptional. #9 (focus ring radius = component radius + 2px) is a detail no benchmark system documents.</div>
+  </div>
+
+  <!-- Dark Mode Borders -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Dark Mode Borders</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">No mention of how border colors or widths change in dark mode.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">Border colors need to adapt for dark backgrounds. <code>color.border.subtle</code> (<code>#E8E4F0</code>) would be invisible on a dark surface. Width may need to increase for visibility.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon adjusts border colors in dark mode. MD3's dynamic theming handles this automatically. Fluent 2 has dark theme border tokens.</div>
+    <div class="suggest"><strong>Suggestion:</strong> Document dark mode border token overrides (or confirm that wiom-color handles this via primitive swap).</div>
+  </div>
+
+  <!-- Border Animation / Transition -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Border Animation / Transition</div>
+      <span class="v v-gap">GAP</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">State transitions documented (rest&rarr;error, rest&rarr;focus) but no transition timing or animation specified.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">How fast does the border change from 1px subtle to 2px error? Is it instant or animated? Duration and easing for border transitions.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 specifies motion tokens for state changes (200ms standard easing). Carbon has transition timing for interactive states.</div>
+    <div class="suggest"><strong>Suggestion:</strong> LOW priority. Reference the motion/animation foundation (if it exists) or document: "border state changes are instant on Android (no animation)" if that's the decision.</div>
+  </div>
+
+  <!-- Documentation & Benchmark -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Documentation &amp; Benchmark</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Complete reference: 2 width tokens, color decision tree, filled rule, position, dividers (inset/full-bleed, when to use/skip), focus ring (Android-specific, WCAG), border style, component map, state transitions, shadow vs border, 11 anti-patterns, industry benchmark, quick reference card.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> This is the most comprehensive stroke/border foundation doc in the benchmark set. No other system documents all of these aspects in one place. The quick reference card is excellent for daily use.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- STROKE BENCHMARKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Stroke vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's stroke and border foundation compares to the best design systems in the industry.</div>
+  </div>
+
+  <table class="bench-table">
+    <thead><tr><th>Wiom Stroke</th><th>World-Class Benchmark</th><th style="width:140px">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="sys">2 width tokens (1px/2px)</td><td>MD3 1dp/3px, Carbon 1/2, Atlassian 1/2</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">4 border color tokens (from color system)</td><td>Carbon references color tokens</td><td><span class="v v-pass">ALIGNED &mdash; clean architecture</span></td></tr>
+      <tr><td class="sys">"Filled = no border" documented</td><td>All systems follow this implicitly</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Position: always inside</td><td>MD3, Carbon inside; Atlassian outside</td><td><span class="v v-pass">ALIGNED with majority</span></td></tr>
+      <tr><td class="sys">Divider inset rule + when to skip</td><td>Polaris, Carbon have guidance</td><td><span class="v v-pass">ALIGNED &mdash; more specific</span></td></tr>
+      <tr><td class="sys">Focus ring Android-specific (TalkBack only)</td><td>No benchmark is this Android-specific</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Focus radius = component + 2px offset</td><td>No benchmark documents this detail</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">"Shadow vs border &mdash; never both" explicit</td><td>MD3, Carbon leave implicit</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">11 anti-patterns</td><td>No benchmark has this many</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Solid-only rule (dashed = empty states)</td><td>MD3, Atlassian similar</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">No dark mode border documentation</td><td>Carbon, MD3 handle dark borders</td><td><span class="v v-miss">MISSING</span></td></tr>
+      <tr><td class="sys">No border transition timing</td><td>MD3 specifies motion tokens</td><td><span class="v v-gap">GAP (low priority)</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- STROKE ACTIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Stroke Prioritized Actions</div>
+    <div class="section-desc">Sorted by impact. The stroke foundation is exceptionally complete &mdash; only 2 items remain.</div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
+    <tbody>
+      <tr><td><span class="action-num">1</span></td><td>Document dark mode border color overrides &mdash; or confirm wiom-color primitive swap handles this</td><td>Dark mode</td><td><span class="p p-high">HIGH</span></td><td>Carbon adjusts border colors in dark mode; MD3 dynamic theming handles automatically</td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Document border transition timing &mdash; instant or animated? Reference motion foundation if exists</td><td>Animation</td><td><span class="p p-low">LOW</span></td><td>MD3 specifies 200ms standard easing for state changes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- STROKE GAPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Stroke Gaps &amp; Ambiguities</div>
+    <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
+  </div>
+  <div class="audit-card">
+    <ul class="gap-list">
+      <li><span class="gap-bullet">&bull;</span>No dark mode border behavior documented &mdash; <code>border.subtle</code> (<code>#E8E4F0</code>) would be invisible on dark surfaces</li>
+      <li><span class="gap-bullet">&bull;</span>No transition timing for border state changes (rest &rarr; error, rest &rarr; focus)</li>
+      <li><span class="gap-bullet">&bull;</span>Implementation files not provided &mdash; can't verify Compose <code>Border()</code> values match spec</li>
+      <li><span class="gap-bullet">&bull;</span>The document references "wiom-color skill" but the color system document (<code>index.html</code>) has internal inconsistencies (Usage Guide tab outdated) &mdash; stroke inherits those issues</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /tab-panel stroke -->
 
 </div><!-- /.page -->
 
