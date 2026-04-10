@@ -202,6 +202,7 @@
   <a data-tab="typography">Typography</a>
   <a data-tab="color">Color</a>
   <a data-tab="shadow">Shadow</a>
+  <a data-tab="radius">Radius</a>
 </nav>
 
 <!-- ============================================================ -->
@@ -212,10 +213,10 @@
 <div class="hero">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
-  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), and shadow system (5 tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
+  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), and radius system (7 tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
   <div class="hero-meta">
     <span><strong>Input:</strong> wiom_typography_foundation.html + index.html (color)</span>
-    <span><strong>Scope:</strong> Typography + Color + Shadow tokens</span>
+    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius tokens</span>
     <span><strong>Platform:</strong> Mobile (Android), Bilingual (EN + HI)</span>
     <span><strong>Date:</strong> April 2026</span>
     <span><strong>Agent:</strong> System Lens v1.0</span>
@@ -228,7 +229,7 @@
     <span class="verdict-label">Overall Conformance</span>
     <span class="verdict-result">Conditional Pass</span>
   </div>
-  <div class="verdict-desc">Strong foundation across typography, color, and shadow &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, and shadow system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments.</div>
+  <div class="verdict-desc">Strong foundation across typography, color, shadow, and radius &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, and radius system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system.</div>
 </div>
 
 <!-- CHECKLIST SUMMARY -->
@@ -272,8 +273,18 @@
       <tr><td class="area-name">Dark Mode Shadows</td><td><span class="v v-miss">MISSING</span></td><td>No dark mode shadow adjustments documented</td></tr>
       <tr><td class="area-name">Colored/Brand Shadows</td><td><span class="v v-miss">MISSING</span></td><td>No brand-tinted or colored shadow variants</td></tr>
       <tr><td class="area-name">Inner Shadows</td><td><span class="v v-gap">GAP</span></td><td>No inner shadow tokens (useful for inputs, inset elements)</td></tr>
+      <!-- Radius -->
+      <tr><td class="area-name">Radius Scale</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 7 tokens on 4px grid, aliased to spacing primitives</td></tr>
+      <tr><td class="area-name">Radius Naming</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; t-shirt sizing (none/tiny/small/medium/large/xlarge/full)</td></tr>
+      <tr><td class="area-name">Nested Formula</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; inner = outer - padding, documented with token pairs</td></tr>
+      <tr><td class="area-name">Component Mapping (radius)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; every component assigned exactly one radius</td></tr>
+      <tr><td class="area-name">Decision Tree (radius)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 7-step selection logic</td></tr>
+      <tr><td class="area-name">Anti-Patterns (radius)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 8 guardrails documented</td></tr>
+      <tr><td class="area-name">Corner Type</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; standard circular, not squircle, documented</td></tr>
+      <tr><td class="area-name">Responsive Radius</td><td><span class="v v-miss">MISSING</span></td><td>No breakpoint/screen-size adaptation for radius</td></tr>
+      <tr><td class="area-name">Radius for Dark Mode</td><td><span class="v v-gap">GAP</span></td><td>No documentation on whether radius changes in dark mode (typically doesn't, but should be stated)</td></tr>
       <!-- Overall -->
-      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW priority items</td></tr>
+      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW priority items</td></tr>
     </tbody>
   </table>
 </div>
@@ -310,6 +321,14 @@
       <div class="audit-content">5 shadow tokens: shadow.none, shadow.sm, shadow.md, shadow.lg, shadow.xl. Power-of-2 scale with single formula (offset-y = dp, blur = dp &times; 3, spread = 0, opacity = 15%).</div>
     </div>
     <div class="audit-row">
+      <div class="audit-label">Radius Input</div>
+      <div class="audit-content">Radius foundation document &mdash; 7 radius tokens on 4px grid, nested formula, component mapping, decision tree, anti-patterns, industry benchmark, corner type decision, top-only rounding. Platform: Android (Compose).</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Radius Tokens Found</div>
+      <div class="audit-content">7 radius tokens: radius-none (0px), radius-tiny (4px), radius-small (8px), radius-medium (12px), radius-large (16px), radius-xlarge (24px), radius-full (9999px). All on 4px grid, aliased to spacing primitives.</div>
+    </div>
+    <div class="audit-row">
       <div class="audit-label">Not Reviewed (not provided)</div>
       <div class="audit-content">Spacing tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
     </div>
@@ -320,11 +339,11 @@
 <div class="footer">
   <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
   <div class="footer-tags">
-    <span class="footer-tag">57 tokens audited</span>
-    <span class="footer-tag">16 PASS</span>
-    <span class="footer-tag">5 GAP</span>
-    <span class="footer-tag">8 MISSING</span>
-    <span class="footer-tag">21 actions</span>
+    <span class="footer-tag">64 tokens audited</span>
+    <span class="footer-tag">23 PASS</span>
+    <span class="footer-tag">6 GAP</span>
+    <span class="footer-tag">9 MISSING</span>
+    <span class="footer-tag">23 actions</span>
     <span class="footer-tag">April 2026</span>
   </div>
 </div>
@@ -1196,6 +1215,255 @@
 </div>
 
 </div><!-- /tab-panel shadow -->
+
+<!-- ============================================================ -->
+<!-- TAB: RADIUS                                                   -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="radius">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-title">Radius Token Audit</div>
+    <div class="section-desc">Each area of the radius system reviewed against world-class benchmarks.</div>
+  </div>
+
+  <!-- Radius Scale -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Radius Scale</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">7 tokens on 4px grid (<code>0, 4, 8, 12, 16, 24, 9999</code>). Aliased to spacing primitives for consistency. Two new tokens (<code>none</code> + <code>full</code>) added from audit to close gaps.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The 4px grid alignment is excellent &mdash; ensures visual consistency with spacing and typography line-heights. Aliasing to spacing primitives is a smart architectural choice that most systems miss. The none&rarr;full range covers every use case from sharp edges to perfect circles.</div>
+    <div class="bench"><strong>Benchmark:</strong> Material Design 3 uses 7 radius values. Atlassian uses 7. Ant Design uses 5. Carbon uses ~2. Polaris uses 5. Wiom's 7 tokens match the industry sweet spot. The 4px grid alignment matches MD3. The spacing aliasing is unique &mdash; no benchmark system does this.</div>
+
+    <!-- Radius Token Reference -->
+    <table class="token-ref" style="margin-top:20px">
+      <thead><tr><th>Token</th><th>Value</th><th>Use Cases</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">radius-none</td><td class="token-val">0px</td><td>Table cells, inline badges, square thumbnails</td></tr>
+        <tr><td class="token-name">radius-tiny</td><td class="token-val">4px</td><td>Badges, tags, tiny chips, lozenges, tooltips</td></tr>
+        <tr><td class="token-name">radius-small</td><td class="token-val">8px</td><td>Chips, snackbars, small containers</td></tr>
+        <tr><td class="token-name">radius-medium</td><td class="token-val">12px</td><td>Input fields, inner cards, nested containers</td></tr>
+        <tr><td class="token-name">radius-large</td><td class="token-val">16px</td><td>Buttons, cards, sheets, main containers</td></tr>
+        <tr><td class="token-name">radius-xlarge</td><td class="token-val">24px</td><td>Dialogs, modals, bottom sheets</td></tr>
+        <tr><td class="token-name">radius-full</td><td class="token-val">9999px</td><td>Avatars, pill buttons, FABs, status dots, circles</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Radius Naming -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Radius Naming</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">T-shirt sizing: <code>none, tiny, small, medium, large, xlarge, full</code>. Consistent with shadow naming convention.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Matches MD3, Atlassian (t-shirt). Carbon uses numbered. The t-shirt approach is more readable.</div>
+  </div>
+
+  <!-- Nested Formula -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Nested Formula</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content"><strong>inner = outer - padding.</strong> If padding &gt; outer, inner = 0. All standard token pairs documented: <code>large&rarr;medium</code> (16-4=12), <code>large&rarr;small</code> (16-8=8), <code>xlarge&rarr;large</code> (24-8=16), <code>xlarge&rarr;small</code> (24-16=8), <code>small&rarr;tiny</code> (8-4=4), <code>medium&rarr;small</code> (12-4=8).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> This is exceptional. Every nested pair lands on an existing token &mdash; no arbitrary values needed. The 4px grid guarantees clean subtraction. Most design systems leave nesting implicit (MD3 mentions it, Atlassian covers focus rings only). Wiom's explicit formula + pair table is above benchmark.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 mentions nesting implicitly. Atlassian covers focus ring nesting only. No other benchmark system documents this as thoroughly.</div>
+  </div>
+
+  <!-- Component Mapping -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Component Mapping</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Every component assigned one radius:<br>
+        <strong>&bull; none (0px):</strong> app bar, table cell, square thumbnail, divider<br>
+        <strong>&bull; tiny (4px):</strong> badge, tag, checkbox, tooltip<br>
+        <strong>&bull; small (8px):</strong> chip, snackbar, square avatar<br>
+        <strong>&bull; medium (12px):</strong> input field, search bar, inner/nested card<br>
+        <strong>&bull; large (16px):</strong> button, card main, sheet, main container<br>
+        <strong>&bull; xlarge (24px):</strong> dialog, modal, bottom sheet top<br>
+        <strong>&bull; full (9999px):</strong> avatar, pill button, FAB, status dot, radio, toggle, progress/slider
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Exhaustive. One-radius-per-component eliminates ambiguity.</div>
+  </div>
+
+  <!-- Decision Tree -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Decision Tree</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">7-step decision tree from <code>full &rarr; none &rarr; xlarge &rarr; large &rarr; medium &rarr; small &rarr; tiny</code>. Default not explicitly stated but the tree is unambiguous.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Clean and complete.</div>
+  </div>
+
+  <!-- Anti-Patterns -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Anti-Patterns</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">8 documented guardrails:<br>
+        <strong>1.</strong> Same radius on nested containers<br>
+        <strong>2.</strong> radius-full on rectangles (creates oval)<br>
+        <strong>3.</strong> Mixed radii on siblings<br>
+        <strong>4.</strong> Hardcoded values<br>
+        <strong>5.</strong> Inconsistent similar components<br>
+        <strong>6.</strong> Radius on edge-to-edge elements<br>
+        <strong>7.</strong> Figma corner smoothing inconsistency<br>
+        <strong>8.</strong> Ignoring stroke width impact
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The stroke width consideration (#8) is rare &mdash; most systems ignore that a 2px stroke on 8px radius means 6px visible inner rounding. The "siblings must share" rule (#3) prevents visual inconsistency.</div>
+    <div class="bench"><strong>Benchmark:</strong> No benchmark system documents 8 anti-patterns for radius. This is a unique strength.</div>
+  </div>
+
+  <!-- Corner Type -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Corner Type</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Standard circular arcs (CSS <code>border-radius</code> / Compose <code>RoundedCornerShape</code>). Explicitly NOT squircle. Figma corner smoothing = 0% everywhere.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The explicit "not squircle" decision is important for Android &mdash; squircle requires custom Compose Shape and adds complexity. Good decision for the platform.</div>
+  </div>
+
+  <!-- Top-Only Rounding -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Top-Only Rounding</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Bottom sheets: 24px top, 0px bottom. App bar: 0px all. Everything else: all 4 corners.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Documented and clear.</div>
+  </div>
+
+  <!-- Responsive Radius -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Responsive Radius</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">No mention of how radius adapts across screen sizes.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">On very small screens, 24px xlarge radius on a narrow dialog may look disproportionate. On tablets, radius values may need to scale up.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 doesn't scale radius by screen size. Most systems don't. This is a minor gap &mdash; document that radius values are fixed across screen sizes (if that's the decision).</div>
+    <div class="suggest"><strong>Suggestion:</strong> LOW priority. Simply document "radius values are fixed across screen sizes" if that's intentional.</div>
+  </div>
+
+  <!-- Documentation & Benchmark -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Documentation &amp; Benchmark</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Complete reference with token table, visual scale, decision tree, nested formula with pairs, component mapping, corner type decision, partial rounding, 8 anti-patterns, industry benchmark (vs M3, Ant, Atlassian, Carbon, Stripe), quick reference card. Platform documented (Android Compose).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The quick reference card at the end is excellent for daily use. The industry benchmark table is thorough. This is one of the most complete radius foundation docs compared to any benchmark system.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- RADIUS BENCHMARKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Radius vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's radius foundation compares to the best design systems in the industry.</div>
+  </div>
+
+  <table class="bench-table">
+    <thead><tr><th>Wiom Radius</th><th>World-Class Benchmark</th><th style="width:140px">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="sys">7 tokens on 4px grid</td><td>MD3 7, Atlassian 7, Ant 5, Carbon ~2</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">T-shirt naming</td><td>MD3, Atlassian use similar</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">none (0px) + full (9999px) tokens</td><td>MD3 has both; Ant, Carbon don't</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Nested formula documented with pairs</td><td>MD3 implicit only; Atlassian focus-only</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Aliased to spacing primitives</td><td>No benchmark does this</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Component-to-radius mapping</td><td>MD3 documents this; others partial</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">8 anti-patterns documented</td><td>No benchmark documents this many</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Stroke width impact noted</td><td>No benchmark documents this</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Standard circular (not squircle)</td><td>All except Apple use circular</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">No responsive radius adaptation</td><td>MD3 doesn't scale either</td><td><span class="v v-miss">MISSING (minor)</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- RADIUS ACTIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Radius Prioritized Actions</div>
+    <div class="section-desc">Sorted by impact. Both items are LOW priority &mdash; the radius foundation is exceptionally complete.</div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
+    <tbody>
+      <tr><td><span class="action-num">1</span></td><td>Document that radius values are fixed across screen sizes (if intentional)</td><td>Responsiveness</td><td><span class="p p-low">LOW</span></td><td>MD3 doesn't scale radius by screen size either &mdash; just document the decision</td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Consider documenting dark mode radius behavior (typically unchanged, but worth stating)</td><td>Dark mode</td><td><span class="p p-low">LOW</span></td><td>Most systems don't change radius in dark mode &mdash; just confirm</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- RADIUS GAPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Radius Gaps &amp; Ambiguities</div>
+    <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
+  </div>
+  <div class="audit-card">
+    <ul class="gap-list">
+      <li><span class="gap-bullet">&bull;</span>No explicit statement on whether radius scales with screen size (probably doesn't, but should be documented)</li>
+      <li><span class="gap-bullet">&bull;</span>Implementation files mentioned but not provided &mdash; can't verify Compose <code>RoundedCornerShape</code> values match token spec</li>
+      <li><span class="gap-bullet">&bull;</span>Figma-to-code parity for radius not explicitly documented (corner smoothing 0% is stated for Figma, but no Compose equivalent mapping shown)</li>
+      <li><span class="gap-bullet">&bull;</span>No mention of animation/transition behavior when radius changes (e.g., expanding bottom sheet from 24px to 0px)</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /tab-panel radius -->
 
 </div><!-- /.page -->
 
