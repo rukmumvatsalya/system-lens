@@ -204,6 +204,7 @@
   <a data-tab="shadow">Shadow</a>
   <a data-tab="radius">Radius</a>
   <a data-tab="stroke">Stroke</a>
+  <a data-tab="iconography">Iconography</a>
 </nav>
 
 <!-- ============================================================ -->
@@ -214,10 +215,10 @@
 <div class="hero">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
-  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), radius system (7 tokens), and stroke system (2 width tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
+  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), radius system (7 tokens), stroke system (2 width tokens), and iconography system (3 size tokens, Material Symbols Rounded) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
   <div class="hero-meta">
     <span><strong>Input:</strong> wiom_typography_foundation.html + index.html (color) + stroke foundation</span>
-    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius + Stroke tokens</span>
+    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius + Stroke + Iconography tokens</span>
     <span><strong>Platform:</strong> Mobile (Android), Bilingual (EN + HI)</span>
     <span><strong>Date:</strong> April 2026</span>
     <span><strong>Agent:</strong> System Lens v1.0</span>
@@ -230,7 +231,7 @@
     <span class="verdict-label">Overall Conformance</span>
     <span class="verdict-result">Conditional Pass</span>
   </div>
-  <div class="verdict-desc">Strong foundation across typography, color, shadow, radius, and stroke &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, radius system, and stroke system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system. Stroke is the most comprehensive border foundation in the benchmark set &mdash; 2 width tokens with clear passive/interactive split, "filled = no border" rule, 11 anti-patterns, Android-specific focus ring guidance, and "shadow vs border: never both" rule are all unique strengths. Only missing dark mode border colors and border transition timing.</div>
+  <div class="verdict-desc">Strong foundation across typography, color, shadow, radius, stroke, and iconography &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, radius system, stroke system, and icon system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system. Stroke is the most comprehensive border foundation in the benchmark set &mdash; 2 width tokens with clear passive/interactive split, "filled = no border" rule, 11 anti-patterns, Android-specific focus ring guidance, and "shadow vs border: never both" rule are all unique strengths. Iconography introduces Material Symbols Rounded with 3 size tokens (16/24/48dp), a 3-layer sizing model (glyph/container/touch target), per-context fill behavior rules, and 6 icon categories with governance &mdash; the user app benchmark (8/8 apps use Rounded) and codebase self-audit are unique strengths. Missing RTL/mirroring guidance, dark mode icon colors, and icon animation timing.</div>
 </div>
 
 <!-- CHECKLIST SUMMARY -->
@@ -298,8 +299,19 @@
       <tr><td class="area-name">Anti-Patterns (stroke)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 11 guardrails documented</td></tr>
       <tr><td class="area-name">Dark Mode Borders</td><td><span class="v v-miss">MISSING</span></td><td>No dark mode border color adjustments documented</td></tr>
       <tr><td class="area-name">Border Animation</td><td><span class="v v-gap">GAP</span></td><td>No transition timing for state changes (rest&rarr;error, rest&rarr;focus)</td></tr>
+      <!-- Iconography -->
+      <tr><td class="area-name">Icon Library Choice</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; Material Symbols Rounded, 8/8 user apps benchmarked, native to Android/Compose</td></tr>
+      <tr><td class="area-name">Icon Size Tokens</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 3 tokens (16/24/48dp), 3-layer model (glyph/container/touch), WiomIconButton</td></tr>
+      <tr><td class="area-name">Fill Behavior Rules</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; outlined=default, filled=earned, per-context rules for 6 contexts</td></tr>
+      <tr><td class="area-name">Icon Categories</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 6 categories with governance, naming conventions, brand/partner exemptions</td></tr>
+      <tr><td class="area-name">Codebase Audit (icons)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 3 style violations, 36dp non-standard, 0 tokens, missing touch targets all flagged</td></tr>
+      <tr><td class="area-name">Touch Target Compliance</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 48dp minimum, WiomIconButton handles automatically, icon.xs restricted</td></tr>
+      <tr><td class="area-name">Accessibility (icons)</td><td><span class="v v-gap">GAP</span></td><td>contentDescription guidance present, but no RTL/mirroring rules or icon color contrast ratios</td></tr>
+      <tr><td class="area-name">Dark Mode Icons</td><td><span class="v v-miss">MISSING</span></td><td>No icon tinting behavior or color tokens for dark surfaces documented</td></tr>
+      <tr><td class="area-name">Icon Animation / Motion</td><td><span class="v v-miss">MISSING</span></td><td>No transition timing for fill state changes, no micro-interaction specs</td></tr>
+      <tr><td class="area-name">Documentation &amp; Rollout (icons)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 4-phase rollout, zero-disruption migration, 36dp decision framework</td></tr>
       <!-- Overall -->
-      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW &middot; Stroke: 1 HIGH, 1 LOW priority items</td></tr>
+      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW &middot; Stroke: 1 HIGH, 1 LOW &middot; Iconography: 1 HIGH, 2 MEDIUM, 1 LOW priority items</td></tr>
     </tbody>
   </table>
 </div>
@@ -352,8 +364,16 @@
       <div class="audit-content">2 stroke width tokens: stroke-small (1px) for passive containers, stroke-medium (2px) for interactive/active/error states. 4 border color tokens referenced from wiom-color: border.subtle, border.default, border.strong, border.brand.</div>
     </div>
     <div class="audit-row">
+      <div class="audit-label">Iconography Input</div>
+      <div class="audit-content">Iconography foundation &mdash; Material Symbols Rounded library, 3 size tokens (icon.xs/m/l), 3-layer sizing model (glyph/container/touch target), fill behavior rules per context, 6 icon categories (Action/Navigation/Status/Toggle/Brand/Partner), codebase audit findings, 7 governance rules, 4-phase rollout plan. Platform: Android (Compose).</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Iconography Tokens Found</div>
+      <div class="audit-content">3 icon size tokens: icon.xs (16dp glyph / 24dp container / 40dp touch), icon.m (24dp / 40dp / 48dp), icon.l (48dp / 56dp / 56dp). Kotlin: WiomIcon.XS, WiomIcon.M, WiomIcon.L. WiomIconButton composable handles container + touch target automatically.</div>
+    </div>
+    <div class="audit-row">
       <div class="audit-label">Not Reviewed (not provided)</div>
-      <div class="audit-content">Spacing tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
+      <div class="audit-content">Spacing tokens, motion tokens, components, patterns. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
     </div>
   </div>
 </div>
@@ -362,11 +382,11 @@
 <div class="footer">
   <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
   <div class="footer-tags">
-    <span class="footer-tag">66 tokens audited</span>
-    <span class="footer-tag">34 PASS</span>
-    <span class="footer-tag">7 GAP</span>
-    <span class="footer-tag">10 MISSING</span>
-    <span class="footer-tag">25 actions</span>
+    <span class="footer-tag">69 tokens audited</span>
+    <span class="footer-tag">41 PASS</span>
+    <span class="footer-tag">8 GAP</span>
+    <span class="footer-tag">12 MISSING</span>
+    <span class="footer-tag">29 actions</span>
     <span class="footer-tag">April 2026</span>
   </div>
 </div>
@@ -1804,6 +1824,305 @@
 </div>
 
 </div><!-- /tab-panel stroke -->
+
+<!-- ============================================================ -->
+<!-- TAB: ICONOGRAPHY                                              -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="iconography">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-title">Iconography Audit</div>
+    <div class="section-desc">Each area of the iconography system reviewed against world-class benchmarks.</div>
+  </div>
+
+  <!-- Library Choice -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Library Choice</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content"><strong>Material Symbols Rounded</strong> &mdash; chosen over Phosphor, Lucide, and Font Awesome. 5 reasons: user familiarity (8/8 benchmark apps use Rounded), optical sizing across 16&ndash;48dp range, native fill axis (outlined&rarr;filled), native to Android/Kotlin/Compose, actively maintained (2,500+ icons). Style: Rounded. Not Outlined (too thin on 720p budget devices), not Sharp (clashes with Noto Sans and rounded shapes).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The user benchmark (WhatsApp, YouTube, Instagram, PhonePe, Google Pay, JioHotstar, Paytm, Truecaller) is unique &mdash; no other design system benchmarks against their users' actual apps. This ensures zero visual language disruption for Wiom's target audience.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 uses Material Symbols. Most systems use custom or Phosphor. Wiom's choice aligns with the platform and user base.</div>
+  </div>
+
+  <!-- Size Token System -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Size Token System</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">3 tokens with clear roles:
+        <strong>icon.xs</strong> (16dp glyph, 24dp container, 40dp touch) &mdash; restricted, inline indicators only.
+        <strong>icon.m</strong> (24dp glyph, 40dp container, 48dp touch) &mdash; DEFAULT, toolbar/nav/list/buttons/chips.
+        <strong>icon.l</strong> (48dp glyph, 56dp container, 56dp touch) &mdash; hero/empty state/onboarding.
+        Kotlin: <code>WiomIcon.XS</code>, <code>WiomIcon.M</code>, <code>WiomIcon.L</code>. No 32dp &mdash; evaluated, current cases split cleanly into 24dp or 48dp. Can add as <code>icon.lg</code> if evidence emerges.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">3-Layer Sizing Model</div>
+      <div class="audit-content">
+        <strong>Glyph size:</strong> visible icon (16/24/48dp) &nbsp;&middot;&nbsp;
+        <strong>Container size:</strong> box icon sits in (24/40/56dp) &nbsp;&middot;&nbsp;
+        <strong>Touch target:</strong> minimum tappable area (40/48/56dp, Google requires 48dp min).
+        <code>WiomIconButton</code> composable handles container + touch target automatically.
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The 3-layer model (glyph/container/touch target) is excellent &mdash; it solves the "should this be 24 or 48?" confusion. WiomIconButton handling container + touch automatically is great DX.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 uses 3 sizes (20/24/40). Carbon uses 4 (16/20/24/32). Polaris uses 3. Wiom's 3 aligns with industry. The 3-layer model documentation exceeds most systems.</div>
+  </div>
+
+  <!-- Fill Behavior Rules -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Fill Behavior Rules</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Clear rules per context. <strong>Outlined = default. Filled = earned</strong> (selected, active, or status). No arbitrary mixing allowed.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Per-Context Rules</div>
+      <div class="audit-content">
+        <strong>Bottom nav/tabs:</strong> outlined default &rarr; filled when selected &nbsp;&middot;&nbsp;
+        <strong>Toolbar actions:</strong> always outlined (no selected state) &nbsp;&middot;&nbsp;
+        <strong>List/card actions:</strong> always outlined &nbsp;&middot;&nbsp;
+        <strong>Toggle actions</strong> (bookmark, favorite): outlined off &rarr; filled on &nbsp;&middot;&nbsp;
+        <strong>Status/feedback</strong> (success, error, warning): always filled &nbsp;&middot;&nbsp;
+        <strong>Empty states/hero:</strong> always outlined (filled at 48dp looks too heavy)
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The per-context table (nav&rarr;filled on select, toolbar&rarr;always outlined, status&rarr;always filled, hero&rarr;always outlined) eliminates ambiguity entirely.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 documents fill behavior. Polaris doesn't use fill axis. Carbon uses filled/outlined but less formally. Wiom's per-context rules are more specific than most.</div>
+  </div>
+
+  <!-- Icon Categories -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Icon Categories</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">6 categories with different rules per category:
+        <strong>Action</strong> (back, search, share) &mdash; Rounded outlined always, Material Symbols.
+        <strong>Navigation</strong> (home, wallet, account) &mdash; outlined&rarr;filled on select.
+        <strong>Status</strong> (success, error, warning) &mdash; filled always.
+        <strong>Toggle</strong> (bookmark, favorite) &mdash; outlined&rarr;filled on toggle.
+        <strong>Brand</strong> (Wiom logo) &mdash; original colors, exempt from tinting, <code>ic_wiom_*</code>, design team only.
+        <strong>Partner/social</strong> (WhatsApp, Instagram) &mdash; original colors, exempt from Rounded, <code>ic_partner_*</code>.
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Separating Action/Navigation/Status/Toggle/Brand/Partner prevents "everything is just an icon" confusion. The naming convention (<code>ic_wiom_*</code>, <code>ic_partner_*</code>) is practical and enforced.</div>
+    <div class="bench"><strong>Benchmark:</strong> Few systems categorize icons this explicitly. MD3 has functional categories. This is above benchmark.</div>
+  </div>
+
+  <!-- Codebase Audit -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Codebase Audit</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Honest self-assessment: <strong>3 style violations</strong> (<code>Icons.Default</code> = Filled mixed in), <strong>36dp non-standard</strong> size in several screens, <strong>0 size tokens</strong> (all hardcoded dp), <strong>touch targets missing</strong> on many 24dp interactive icons. All flagged with severity and migration path.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Self-audit transparency is valuable. Most systems don't document their current codebase gaps. The 36dp migration decision framework ("What is this icon's job?") is practical.</div>
+  </div>
+
+  <!-- Touch Target Compliance -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Touch Target Compliance</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">48dp minimum for interactive icons (Google requirement). <code>WiomIconButton</code> handles this automatically. <code>icon.xs</code> (16dp) restricted from tappable use.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 requires 48dp. Apple HIG requires 44pt. Wiom complies with platform requirement.</div>
+  </div>
+
+  <!-- Accessibility (Icons) -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Accessibility (Icons)</div>
+      <span class="v v-gap">GAP</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content"><code>contentDescription</code> guidance (required for interactive, null for decorative). Disabled icons must meet contrast. Status icons must be paired with text/color.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">
+        <strong>&bull;</strong> No documentation on icon color contrast ratios (icon on surface).<br>
+        <strong>&bull;</strong> No guidance on reduced-motion for animated icons (if any).<br>
+        <strong>&bull;</strong> No RTL/mirroring guidance (which icons flip in RTL layouts &mdash; back arrow, forward, etc.).
+      </div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon documents RTL icon mirroring. MD3 documents which icons mirror in RTL. Polaris has icon accessibility guidelines. WCAG requires 3:1 contrast for meaningful non-text elements.</div>
+    <div class="suggest"><strong>Suggestion:</strong> Add RTL mirroring rules (which icons flip, which don't). Document icon color contrast requirements (3:1 minimum for meaningful non-text elements per WCAG).</div>
+  </div>
+
+  <!-- Dark Mode Icons -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Dark Mode Icons</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">No mention of how icon colors change in dark mode.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">
+        <strong>&bull;</strong> Icon tinting behavior in dark mode.<br>
+        <strong>&bull;</strong> Which color tokens apply to icons on dark surfaces.
+      </div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 handles via on-surface tokens. Carbon adjusts icon colors in dark theme.</div>
+    <div class="suggest"><strong>Suggestion:</strong> Document that icons use <code>text.inverse</code> / <code>text.on-color</code> tokens on dark surfaces (if that's the intent). Clarify which token maps to icon tint per surface.</div>
+  </div>
+
+  <!-- Animation / Motion -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Animation / Motion</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Fill axis transitions (outlined&rarr;filled on state change) mentioned but no animation timing specified.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">
+        <strong>&bull;</strong> How fast does the outlined&rarr;filled transition happen? Easing?<br>
+        <strong>&bull;</strong> Do icons animate on tap (scale, bounce)?<br>
+        <strong>&bull;</strong> Any loading/spinner icon behavior?
+      </div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 specifies icon animation timing (200ms standard). Google Pay uses icon micro-animations.</div>
+    <div class="suggest"><strong>Suggestion:</strong> MEDIUM priority. Document transition timing for fill state changes and any icon micro-interactions. Reference motion foundation if it exists.</div>
+  </div>
+
+  <!-- Documentation & Rollout -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Documentation &amp; Rollout</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">
+        <strong>&bull;</strong> Complete reference with 4-phase rollout plan (Foundation &rarr; Audit &rarr; Migrate &rarr; Material Symbols migration)<br>
+        <strong>&bull;</strong> Zero-disruption migration path (same icon designs)<br>
+        <strong>&bull;</strong> 36dp migration decision framework ("What is this icon's job?")<br>
+        <strong>&bull;</strong> 7 governance rules documented<br>
+        <strong>&bull;</strong> 32dp evaluation decision (add only with evidence) shows restraint<br>
+        <strong>&bull;</strong> "Migrate on touch" avoids big-bang rewrites
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The rollout plan is practical and self-aware. The 32dp evaluation decision (add only with evidence) shows restraint. Most systems don't document their current codebase gaps or provide migration frameworks.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ICONOGRAPHY TOKEN REFERENCE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Reference</div>
+    <div class="section-title">Icon Size Token Table</div>
+  </div>
+  <table class="token-ref">
+    <thead><tr><th>Token</th><th>Glyph</th><th>Container</th><th>Touch Target</th><th>Kotlin</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td class="token-name">icon.xs</td><td class="token-val">16dp</td><td class="token-val">24dp</td><td class="token-val">40dp</td><td class="token-val">WiomIcon.XS</td><td>Restricted &mdash; inline indicators only</td></tr>
+      <tr><td class="token-name">icon.m</td><td class="token-val">24dp</td><td class="token-val">40dp</td><td class="token-val">48dp</td><td class="token-val">WiomIcon.M</td><td>DEFAULT &mdash; toolbar, nav, list, buttons, chips</td></tr>
+      <tr><td class="token-name">icon.l</td><td class="token-val">48dp</td><td class="token-val">56dp</td><td class="token-val">56dp</td><td class="token-val">WiomIcon.L</td><td>Hero, empty state, onboarding</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ICONOGRAPHY BENCHMARKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Iconography vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's iconography foundation compares to the best design systems in the industry.</div>
+  </div>
+
+  <table class="bench-table">
+    <thead><tr><th>Wiom Iconography</th><th>World-Class Benchmark</th><th style="width:140px">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="sys">Material Symbols Rounded</td><td>MD3 uses same; platform-native</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">8/8 user apps benchmarked for style</td><td>No system benchmarks against user apps</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">3 size tokens (16/24/48dp)</td><td>MD3 3 sizes, Carbon 4, Polaris 3</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">3-layer sizing model (glyph/container/touch)</td><td>MD3 documents this</td><td><span class="v v-pass">ALIGNED &mdash; more explicit</span></td></tr>
+      <tr><td class="sys">Fill behavior per context (6 rules)</td><td>MD3 documents fill</td><td><span class="v v-pass">ALIGNED &mdash; more specific</span></td></tr>
+      <tr><td class="sys">6 icon categories with governance</td><td>Few systems categorize this explicitly</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Codebase audit with migration path</td><td>Most systems don't self-audit</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">No RTL/mirroring guidance</td><td>MD3, Carbon document RTL mirroring</td><td><span class="v v-gap">GAP</span></td></tr>
+      <tr><td class="sys">No dark mode icon documentation</td><td>MD3, Carbon handle via tokens</td><td><span class="v v-miss">MISSING</span></td></tr>
+      <tr><td class="sys">No icon animation/transition timing</td><td>MD3 specifies 200ms standard</td><td><span class="v v-miss">MISSING</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ICONOGRAPHY ACTIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Iconography Prioritized Actions</div>
+    <div class="section-desc">Sorted by impact. HIGH items close the gap to world-class. MEDIUM items add polish. LOW items are nice-to-have.</div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
+    <tbody>
+      <tr><td><span class="action-num">1</span></td><td>Document dark mode icon color behavior &mdash; which tokens apply on dark surfaces, icon tinting rules</td><td>Dark mode</td><td><span class="p p-high">HIGH</span></td><td>MD3 uses on-surface tokens; Carbon adjusts in dark theme</td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Document RTL/mirroring rules &mdash; which icons flip in RTL, which don't (back arrow flips, checkmark doesn't)</td><td>Accessibility</td><td><span class="p p-med">MEDIUM</span></td><td>MD3, Carbon document RTL icon mirroring</td></tr>
+      <tr><td><span class="action-num">3</span></td><td>Document icon color contrast requirements &mdash; icon on surface ratios (3:1 minimum for meaningful non-text elements)</td><td>Accessibility</td><td><span class="p p-med">MEDIUM</span></td><td>WCAG requires 3:1 for meaningful non-text elements</td></tr>
+      <tr><td><span class="action-num">4</span></td><td>Document icon animation/transition timing for fill state changes and micro-interactions</td><td>Motion</td><td><span class="p p-low">LOW</span></td><td>MD3 specifies 200ms standard easing for icon transitions</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ICONOGRAPHY GAPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Iconography Gaps &amp; Ambiguities</div>
+    <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
+  </div>
+  <div class="audit-card">
+    <ul class="gap-list">
+      <li><span class="gap-bullet">&bull;</span>No RTL/mirroring guidance &mdash; critical for Hindi/Devanagari market where RTL awareness matters for future multilingual support</li>
+      <li><span class="gap-bullet">&bull;</span>No dark mode icon color behavior documented &mdash; icons using <code>text.primary</code> would need to swap to inverse tokens on dark surfaces</li>
+      <li><span class="gap-bullet">&bull;</span>No icon animation timing for fill transitions &mdash; outlined&rarr;filled state change has no specified duration or easing</li>
+      <li><span class="gap-bullet">&bull;</span>No icon color contrast ratios documented &mdash; which text color tokens apply to icons at each size</li>
+      <li><span class="gap-bullet">&bull;</span>32dp evaluation deferred &mdash; if post-migration audit shows a gap, it should be documented as a decision</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /tab-panel iconography -->
 
 </div><!-- /.page -->
 
