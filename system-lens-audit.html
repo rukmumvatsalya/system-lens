@@ -201,6 +201,7 @@
   <a data-tab="summary" class="active">Summary</a>
   <a data-tab="typography">Typography</a>
   <a data-tab="color">Color</a>
+  <a data-tab="shadow">Shadow</a>
 </nav>
 
 <!-- ============================================================ -->
@@ -211,10 +212,10 @@
 <div class="hero">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
-  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens) and color system (39 semantic tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
+  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), and shadow system (5 tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
   <div class="hero-meta">
     <span><strong>Input:</strong> wiom_typography_foundation.html + index.html (color)</span>
-    <span><strong>Scope:</strong> Typography + Color tokens</span>
+    <span><strong>Scope:</strong> Typography + Color + Shadow tokens</span>
     <span><strong>Platform:</strong> Mobile (Android), Bilingual (EN + HI)</span>
     <span><strong>Date:</strong> April 2026</span>
     <span><strong>Agent:</strong> System Lens v1.0</span>
@@ -227,7 +228,7 @@
     <span class="verdict-label">Overall Conformance</span>
     <span class="verdict-result">Conditional Pass</span>
   </div>
-  <div class="verdict-desc">Strong foundation across both typography and color &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, and interaction states are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens.</div>
+  <div class="verdict-desc">Strong foundation across typography, color, and shadow &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, and shadow system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments.</div>
 </div>
 
 <!-- CHECKLIST SUMMARY -->
@@ -262,8 +263,17 @@
       <tr><td class="area-name">Data Visualization</td><td><span class="v v-miss">MISSING</span></td><td>No chart/graph color palette</td></tr>
       <tr><td class="area-name">Positive/Warning/Info Interaction States</td><td><span class="v v-gap">GAP</span></td><td>No hover/pressed tokens (brand + negative have them)</td></tr>
       <tr><td class="area-name">Opacity Tokens</td><td><span class="v v-miss">MISSING</span></td><td>Disabled uses "40% opacity" but no formalized token</td></tr>
+      <!-- Shadow -->
+      <tr><td class="area-name">Shadow Scale</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 5 clean tokens, power-of-2 progression, single formula</td></tr>
+      <tr><td class="area-name">Shadow Naming</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; semantic role-based (shadow.none/sm/md/lg/xl)</td></tr>
+      <tr><td class="area-name">Component Mapping</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; every component assigned exactly one shadow</td></tr>
+      <tr><td class="area-name">Decision Tree</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; clear selection logic documented</td></tr>
+      <tr><td class="area-name">Shadow + Border Coexistence</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; budget device guidance documented</td></tr>
+      <tr><td class="area-name">Dark Mode Shadows</td><td><span class="v v-miss">MISSING</span></td><td>No dark mode shadow adjustments documented</td></tr>
+      <tr><td class="area-name">Colored/Brand Shadows</td><td><span class="v v-miss">MISSING</span></td><td>No brand-tinted or colored shadow variants</td></tr>
+      <tr><td class="area-name">Inner Shadows</td><td><span class="v v-gap">GAP</span></td><td>No inner shadow tokens (useful for inputs, inset elements)</td></tr>
       <!-- Overall -->
-      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW priority items</td></tr>
+      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW priority items</td></tr>
     </tbody>
   </table>
 </div>
@@ -284,6 +294,10 @@
       <div class="audit-content"><code>index.html</code> &mdash; color system document with 5 tabs (Response, Token Spec, Usage Guide, Decision Log, Legacy Audit). 33 primitives + 39 semantic tokens across 8 groups.</div>
     </div>
     <div class="audit-row">
+      <div class="audit-label">Shadow Input</div>
+      <div class="audit-content">Shadow foundation PDF &mdash; 5 shadow tokens (none/sm/md/lg/xl), single formula system, component mapping, decision tree, do/don't guidelines, budget device guidance. Implementation files: <code>shadow-tokens.json</code>, <code>shadow-tokens.css</code>, <code>v1-shadow-tokens-final.md</code>, <code>shadow-usage.md</code>.</div>
+    </div>
+    <div class="audit-row">
       <div class="audit-label">Typography Tokens Found</div>
       <div class="audit-content">13 semantic typography tokens across 6 groups (Display, Heading, Title, Body, Label, Meta).</div>
     </div>
@@ -292,8 +306,12 @@
       <div class="audit-content">39 semantic color tokens across 8 groups (Brand, Text, Surface, Border, Positive, Negative, Warning, Info) + Overlay. 33 primitive tokens for theming layer.</div>
     </div>
     <div class="audit-row">
+      <div class="audit-label">Shadow Tokens Found</div>
+      <div class="audit-content">5 shadow tokens: shadow.none, shadow.sm, shadow.md, shadow.lg, shadow.xl. Power-of-2 scale with single formula (offset-y = dp, blur = dp &times; 3, spread = 0, opacity = 15%).</div>
+    </div>
+    <div class="audit-row">
       <div class="audit-label">Not Reviewed (not provided)</div>
-      <div class="audit-content">Spacing tokens, elevation tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
+      <div class="audit-content">Spacing tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
     </div>
   </div>
 </div>
@@ -302,11 +320,11 @@
 <div class="footer">
   <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
   <div class="footer-tags">
-    <span class="footer-tag">52 tokens audited</span>
-    <span class="footer-tag">11 PASS</span>
-    <span class="footer-tag">4 GAP</span>
-    <span class="footer-tag">6 MISSING</span>
-    <span class="footer-tag">18 actions</span>
+    <span class="footer-tag">57 tokens audited</span>
+    <span class="footer-tag">16 PASS</span>
+    <span class="footer-tag">5 GAP</span>
+    <span class="footer-tag">8 MISSING</span>
+    <span class="footer-tag">21 actions</span>
     <span class="footer-tag">April 2026</span>
   </div>
 </div>
@@ -917,6 +935,267 @@
 </div>
 
 </div><!-- /tab-panel color -->
+
+<!-- ============================================================ -->
+<!-- TAB: SHADOW                                                   -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="shadow">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-title">Shadow Token Audit</div>
+    <div class="section-desc">Each area of the shadow system reviewed against world-class benchmarks.</div>
+  </div>
+
+  <!-- Shadow Scale -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Shadow Scale</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">5 tokens on a <strong>power-of-2 scale</strong> (1dp, 2dp, 4dp, 8dp + none). Single formula: <code>offset-y = dp, blur = dp &times; 3, spread = 0, opacity = 15%</code>. Clean, predictable, mathematical.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The single-formula approach is elegant. Knowing the formula means any developer can predict the shadow without checking docs. Power-of-2 scale ensures perceptible jumps between levels.</div>
+    <div class="bench"><strong>Benchmark:</strong> Material Design 3 uses 5 elevation levels. Carbon uses 6. Polaris uses 5. Primer uses 3. Wiom's 5 tokens are right in the sweet spot. The single-formula approach is cleaner than most &mdash; Carbon and MD3 use per-level custom values.</div>
+
+    <!-- Shadow Token Reference -->
+    <table class="token-ref" style="margin-top:20px">
+      <thead><tr><th>Token</th><th>CSS Value</th><th>Scale (dp)</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">shadow.none</td><td class="token-val">none</td><td class="token-val">&mdash;</td></tr>
+        <tr><td class="token-name">shadow.sm</td><td class="token-val">0 1px 3px 0 rgba(0,0,0,0.15)</td><td class="token-val">1dp</td></tr>
+        <tr><td class="token-name">shadow.md</td><td class="token-val">0 2px 6px 0 rgba(0,0,0,0.15)</td><td class="token-val">2dp</td></tr>
+        <tr><td class="token-name">shadow.lg</td><td class="token-val">0 4px 12px 0 rgba(0,0,0,0.15)</td><td class="token-val">4dp</td></tr>
+        <tr><td class="token-name">shadow.xl</td><td class="token-val">0 8px 24px 0 rgba(0,0,0,0.15)</td><td class="token-val">8dp</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Shadow Naming -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Shadow Naming</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content"><code>shadow.{size}</code> &mdash; none, sm, md, lg, xl. Consistent with t-shirt sizing used in spacing.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Matches Polaris (shadow-100 to shadow-500), Primer (shadow-small, shadow-medium, shadow-large). Carbon uses numbered levels. Wiom's t-shirt sizing is readable and intuitive.</div>
+  </div>
+
+  <!-- Component Mapping -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Component Mapping</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Every component assigned exactly one shadow. Clear grouping:<br>
+        <strong>&bull; none:</strong> buttons, inputs, checkboxes, radios, chips, banners, steppers, nav bar<br>
+        <strong>&bull; sm:</strong> sticky nav scrolled, tooltips, passive cards<br>
+        <strong>&bull; md:</strong> interactive cards, bottom sheets, dropdowns, popovers, FAB<br>
+        <strong>&bull; lg:</strong> floating toasts, dropdown over busy bg<br>
+        <strong>&bull; xl:</strong> modal dialogs, full-screen bottom sheets
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The "one shadow per component" rule eliminates ambiguity. The grouping logic is well-reasoned &mdash; flat elements are flat, floating elements float. The max 1&ndash;2 lg elements per screen rule prevents shadow overload.</div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon documents component-to-elevation mapping. Polaris does too. Most other systems leave this implicit. Wiom's explicit mapping is above benchmark.</div>
+  </div>
+
+  <!-- Decision Tree -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Decision Tree</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">5-step decision tree: flat &rarr; sm &rarr; md &rarr; lg &rarr; xl. Default rule: "if unsure, use <code>shadow.md</code>."</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Clean, unambiguous. The default-to-md rule is practical.</div>
+    <div class="bench"><strong>Benchmark:</strong> No benchmark system provides a shadow decision tree this clear. This is a unique strength.</div>
+  </div>
+
+  <!-- Shadow + Border Coexistence -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Shadow + Border Coexistence</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Budget Android guidance &mdash; shadows may wash out at 15% opacity in outdoor light. Recommendation to pair <code>shadow.md</code> with <code>stroke.1</code> + <code>color.border.default</code> on critical interactive surfaces (payment cards, plan selection).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> This is rare and valuable. No benchmark system addresses budget device shadow rendering.</div>
+    <div class="bench"><strong>Benchmark:</strong> No direct benchmark &mdash; Wiom leads here for budget device consideration.</div>
+  </div>
+
+  <!-- Do/Don't Guidelines -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Do/Don't Guidelines</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">6 Do's and 6 Don'ts. Covers: always use tokens, default to md, explicit none, reserve xl, pair with border, limit lg. Don'ts: no lg/xl as default, no intermediate values, no negative shadows, no old dp names, no shadow on flat components, no opacity tricks.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Comprehensive. The "no intermediate values" and "no opacity tricks" rules prevent shadow proliferation.</div>
+  </div>
+
+  <!-- Dark Mode Shadows -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Dark Mode Shadows</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">No mention of how shadows behave in dark mode.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">In dark mode, shadows on dark backgrounds are nearly invisible. World-class systems adjust shadow opacity, add ambient light, or use lighter shadow colors for dark themes.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Material Design 3 increases shadow opacity in dark mode. Carbon adjusts shadow color. Fluent 2 uses ambient + key lights that adapt to theme.</div>
+    <div class="suggest"><strong>Suggestion:</strong> Document dark mode shadow behavior. Options: increase opacity from 15% to 25&ndash;30%, use lighter shadow color, or add a subtle border as fallback.</div>
+  </div>
+
+  <!-- Colored / Brand Shadows -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Colored / Brand Shadows</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">All shadows use <code>rgba(0,0,0,0.15)</code> &mdash; black only.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">No brand-tinted shadow variants (e.g., a pink-tinted shadow for brand CTAs). No colored shadows for semantic feedback (green glow for success, red for error).</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Stripe uses colored shadows extensively (blue glow on focus, colored card shadows). Linear uses subtle colored shadows. Tailwind UI includes colored shadow utilities. Most traditional design systems (Carbon, Polaris) don't have colored shadows, but modern ones increasingly do.</div>
+    <div class="suggest"><strong>Suggestion:</strong> LOW priority. Consider adding <code>shadow.brand</code> (pink-tinted) for primary CTA hover/focus states if the design direction moves toward more expressive interactions.</div>
+  </div>
+
+  <!-- Inner Shadows -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Inner Shadows</div>
+      <span class="v v-gap">GAP</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">No inner shadow tokens. Only drop shadows (downward).</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">Inner shadows for pressed/inset states (e.g., pressed button, active input, inset card). Negative shadows were "permanently removed" but inner shadows are a different concept.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Fluent 2 has inner shadow for pressed states. Some systems handle this via background color change instead. This is a minor gap since Wiom uses color changes for pressed states.</div>
+    <div class="suggest"><strong>Suggestion:</strong> LOW priority. If the design ever needs pressed/inset visual effects beyond color change, add <code>shadow.inset</code> token.</div>
+  </div>
+
+  <!-- Figma-Code Parity -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Figma-Code Parity</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">CSS custom properties (<code>--shadow-none</code> through <code>--shadow-xl</code>) mapped to Figma effect styles (<code>shadow/sm</code> through <code>shadow/xl</code>). Implementation files documented (JSON, CSS, MD).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Explicit parity between Figma and code is documented. This is often the gap that causes drift.</div>
+  </div>
+
+  <!-- Documentation -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Documentation</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Complete reference with token library, decision tree, component mapping, do/don't, technical formula, CSS tokens, Figma styles, implementation files.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Concise and complete. The formula-based approach means the documentation is inherently consistent &mdash; no arbitrary values to drift.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SHADOW BENCHMARKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Shadow vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's shadow foundation compares to the best design systems in the industry.</div>
+  </div>
+
+  <table class="bench-table">
+    <thead><tr><th>Wiom Shadow</th><th>World-Class Benchmark</th><th style="width:140px">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="sys">5 tokens, power-of-2 scale</td><td>MD3 5 levels, Carbon 6, Polaris 5</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Single formula (y=dp, blur=3x, 15%)</td><td>Most systems use per-level custom values</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Semantic naming (shadow.sm/md/lg/xl)</td><td>Polaris, Primer, Carbon all use similar</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Component-to-shadow mapping</td><td>Carbon, Polaris document this</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Shadow decision tree</td><td>No benchmark provides this</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Budget device guidance (shadow + border)</td><td>No benchmark</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Figma-code parity documented</td><td>Carbon, Primer document parity</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">No dark mode shadow adjustment</td><td>MD3, Carbon, Fluent 2 adjust for dark</td><td><span class="v v-miss">MISSING</span></td></tr>
+      <tr><td class="sys">No colored/brand shadows</td><td>Stripe, Linear use colored shadows</td><td><span class="v v-miss">MISSING (low priority)</span></td></tr>
+      <tr><td class="sys">No inner shadow tokens</td><td>Fluent 2 has inner shadow</td><td><span class="v v-gap">GAP (low priority)</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SHADOW ACTIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Shadow Prioritized Actions</div>
+    <div class="section-desc">Sorted by impact. HIGH items close the gap to world-class. LOW items are nice-to-have.</div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
+    <tbody>
+      <tr><td><span class="action-num">1</span></td><td>Document dark mode shadow behavior &mdash; increase opacity or adjust color for dark backgrounds</td><td>Dark mode</td><td><span class="p p-high">HIGH</span></td><td>MD3 increases shadow opacity in dark mode; Carbon adjusts shadow color</td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Consider <code>shadow.brand</code> (pink-tinted) for primary CTA hover/focus if design moves toward expressive interactions</td><td>Expressiveness</td><td><span class="p p-low">LOW</span></td><td>Stripe, Linear use colored shadows; most traditional DS don't</td></tr>
+      <tr><td><span class="action-num">3</span></td><td>Consider <code>shadow.inset</code> for pressed/inset states if needed beyond color changes</td><td>Completeness</td><td><span class="p p-low">LOW</span></td><td>Fluent 2 has inner shadow for pressed states</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SHADOW GAPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Shadow Gaps &amp; Ambiguities</div>
+    <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
+  </div>
+  <div class="audit-card">
+    <ul class="gap-list">
+      <li><span class="gap-bullet">&bull;</span>No dark mode shadow behavior documented &mdash; shadows at 15% opacity on dark backgrounds are nearly invisible</li>
+      <li><span class="gap-bullet">&bull;</span>Negative/upward shadows permanently removed &mdash; decision rationale not documented in this reference (may be in separate decision log)</li>
+      <li><span class="gap-bullet">&bull;</span><code>shadow.none</code> has no Figma style ("no 'no effect' in Figma") &mdash; this is a Figma limitation, not a system gap, but worth noting for Figma-code parity tracking</li>
+      <li><span class="gap-bullet">&bull;</span>Implementation files mentioned (JSON, CSS, MD) but not provided &mdash; can't verify values match the spec</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /tab-panel shadow -->
 
 </div><!-- /.page -->
 
