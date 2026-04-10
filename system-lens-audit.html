@@ -205,6 +205,7 @@
   <a data-tab="radius">Radius</a>
   <a data-tab="stroke">Stroke</a>
   <a data-tab="iconography">Iconography</a>
+  <a data-tab="spacing">Spacing</a>
 </nav>
 
 <!-- ============================================================ -->
@@ -215,10 +216,10 @@
 <div class="hero">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
-  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), radius system (7 tokens), stroke system (2 width tokens), and iconography system (3 size tokens, Material Symbols Rounded) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
+  <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens), color system (39 semantic tokens), shadow system (5 tokens), radius system (7 tokens), stroke system (2 width tokens), iconography system (3 size tokens, Material Symbols Rounded), and spacing system (13 tokens on 4px grid) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
   <div class="hero-meta">
     <span><strong>Input:</strong> wiom_typography_foundation.html + index.html (color) + stroke foundation</span>
-    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius + Stroke + Iconography tokens</span>
+    <span><strong>Scope:</strong> Typography + Color + Shadow + Radius + Stroke + Iconography + Spacing tokens</span>
     <span><strong>Platform:</strong> Mobile (Android), Bilingual (EN + HI)</span>
     <span><strong>Date:</strong> April 2026</span>
     <span><strong>Agent:</strong> System Lens v1.0</span>
@@ -231,7 +232,7 @@
     <span class="verdict-label">Overall Conformance</span>
     <span class="verdict-result">Conditional Pass</span>
   </div>
-  <div class="verdict-desc">Strong foundation across typography, color, shadow, radius, stroke, and iconography &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, radius system, stroke system, and icon system are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system. Stroke is the most comprehensive border foundation in the benchmark set &mdash; 2 width tokens with clear passive/interactive split, "filled = no border" rule, 11 anti-patterns, Android-specific focus ring guidance, and "shadow vs border: never both" rule are all unique strengths. Iconography introduces Material Symbols Rounded with 3 size tokens (16/24/48dp), a 3-layer sizing model (glyph/container/touch target), per-context fill behavior rules, and 6 icon categories with governance &mdash; the user app benchmark (8/8 apps use Rounded) and codebase self-audit are unique strengths. Missing RTL/mirroring guidance, dark mode icon colors, and icon animation timing.</div>
+  <div class="verdict-desc">Strong foundation across typography, color, shadow, radius, stroke, iconography, and spacing &mdash; scale, naming, weight logic, bilingual calibration, migration plan, color architecture, semantic naming, interaction states, shadow system, radius system, stroke system, icon system, and spacing system (13 tokens on strict 4px grid, gap-only convention, 3-tier hierarchy, component recipes) are at or above industry standard. Typography has 4 HIGH-priority gaps (letter-spacing, token architecture, font-scaling, type-color mapping). Color has 1 CRITICAL gap (Usage Guide inconsistency with Token Spec), plus missing dark mode palette, data visualization colors, and opacity tokens. Shadow is exceptionally clean with unique strengths (single formula, decision tree, budget device guidance) but missing dark mode shadow adjustments. Radius is exceptionally thorough &mdash; 7 tokens on 4px grid, aliased to spacing primitives, with unique strengths (nested formula with token pairs, 8 anti-patterns, component mapping) that exceed every benchmark system. Stroke is the most comprehensive border foundation in the benchmark set &mdash; 2 width tokens with clear passive/interactive split, "filled = no border" rule, 11 anti-patterns, Android-specific focus ring guidance, and "shadow vs border: never both" rule are all unique strengths. Iconography introduces Material Symbols Rounded with 3 size tokens (16/24/48dp), a 3-layer sizing model (glyph/container/touch target), per-context fill behavior rules, and 6 icon categories with governance &mdash; the user app benchmark (8/8 apps use Rounded) and codebase self-audit are unique strengths. Missing RTL/mirroring guidance, dark mode icon colors, and icon animation timing. Spacing introduces 13 tokens on strict 4px grid with unique strengths (gap-only convention, 3-tier hierarchy with decision test, platform mapping for Figma/Compose/Flutter/CSS, line-height anti-pattern awareness) &mdash; missing responsive spacing breakpoints and semantic spacing aliases.</div>
 </div>
 
 <!-- CHECKLIST SUMMARY -->
@@ -310,8 +311,20 @@
       <tr><td class="area-name">Dark Mode Icons</td><td><span class="v v-miss">MISSING</span></td><td>No icon tinting behavior or color tokens for dark surfaces documented</td></tr>
       <tr><td class="area-name">Icon Animation / Motion</td><td><span class="v v-miss">MISSING</span></td><td>No transition timing for fill state changes, no micro-interaction specs</td></tr>
       <tr><td class="area-name">Documentation &amp; Rollout (icons)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 4-phase rollout, zero-disruption migration, 36dp decision framework</td></tr>
+      <!-- Spacing -->
+      <tr><td class="area-name">Spacing Scale</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 13 tokens on strict 4px grid (4-84px), covers every use case</td></tr>
+      <tr><td class="area-name">Spacing Hierarchy</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 3-tier (tight/medium/loose) with actionable decision test</td></tr>
+      <tr><td class="area-name">Gap-Only Convention</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; parents own gap, children own padding, no margins ever</td></tr>
+      <tr><td class="area-name">Touch Targets (spacing)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 3-tier (48/32/24px) context-based, buttons hit 48px via padding</td></tr>
+      <tr><td class="area-name">Screen Layout</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; fixed 360&times;720px, status bar, safe area, margins, vertical gaps documented</td></tr>
+      <tr><td class="area-name">Component Recipes (spacing)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 6 component quick-lookup tables (cards, lists, inputs, sheets, snackbar, chips)</td></tr>
+      <tr><td class="area-name">Rules &amp; Anti-Patterns (spacing)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; 6 Do's, 5 Don'ts, line-height anti-pattern documented</td></tr>
+      <tr><td class="area-name">Responsive Spacing</td><td><span class="v v-miss">MISSING</span></td><td>No tablet or landscape spacing documented &mdash; 360&times;720px is phone-only</td></tr>
+      <tr><td class="area-name">Semantic Spacing Tokens</td><td><span class="v v-gap">GAP</span></td><td>No semantic aliases (space-card-padding, space-screen-margin) &mdash; spacing is numeric-only</td></tr>
+      <tr><td class="area-name">Negative Spacing</td><td><span class="v v-gap">GAP</span></td><td>No negative spacing tokens for overlapping elements (avatars, stacked cards)</td></tr>
+      <tr><td class="area-name">Documentation (spacing)</td><td><span class="v v-pass">PASS</span></td><td style="color:var(--n400)">None &mdash; complete reference with scale, hierarchy, recipes, rules, benchmarks</td></tr>
       <!-- Overall -->
-      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW &middot; Stroke: 1 HIGH, 1 LOW &middot; Iconography: 1 HIGH, 2 MEDIUM, 1 LOW priority items</td></tr>
+      <tr style="background:var(--yw50)"><td class="area-name" style="font-weight:700">Overall</td><td><span class="v v-cond">CONDITIONAL PASS</span></td><td style="font-weight:600;color:var(--yw700)">Typography: 4 HIGH, 4 MEDIUM, 4 LOW &middot; Color: 2 HIGH, 2 MEDIUM, 2 LOW &middot; Shadow: 1 HIGH, 2 LOW &middot; Radius: 2 LOW &middot; Stroke: 1 HIGH, 1 LOW &middot; Iconography: 1 HIGH, 2 MEDIUM, 1 LOW &middot; Spacing: 2 MEDIUM, 2 LOW priority items</td></tr>
     </tbody>
   </table>
 </div>
@@ -372,8 +385,16 @@
       <div class="audit-content">3 icon size tokens: icon.xs (16dp glyph / 24dp container / 40dp touch), icon.m (24dp / 40dp / 48dp), icon.l (48dp / 56dp / 56dp). Kotlin: WiomIcon.XS, WiomIcon.M, WiomIcon.L. WiomIconButton composable handles container + touch target automatically.</div>
     </div>
     <div class="audit-row">
+      <div class="audit-label">Spacing Input</div>
+      <div class="audit-content">Spacing foundation document &mdash; 13 tokens on 4px grid (4-84px), 3-tier spacing hierarchy (tight/medium/loose), gap-only convention (no margins ever), 3-tier touch targets (48/32/24px), screen layout (360&times;720px Android), component spacing recipes (cards, lists, inputs, bottom sheets, snackbar, chips), 6 Do's + 5 Don'ts, benchmarked against MD3, Apple HIG, Carbon, Ant Design, Atlassian.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Spacing Tokens Found</div>
+      <div class="audit-content">13 spacing tokens on 4px grid: space-4 (4px), space-8 (8px), space-12 (12px), space-16 (16px), space-24 (24px), space-32 (32px), space-40 (40px), space-48 (48px), space-64 (64px), space-72 (72px), space-84 (84px). Platform mapping: Figma (itemSpacing), Compose (Arrangement.spacedBy()), Flutter (spacing/SizedBox), CSS (gap).</div>
+    </div>
+    <div class="audit-row">
       <div class="audit-label">Not Reviewed (not provided)</div>
-      <div class="audit-content">Spacing tokens, motion tokens, components, patterns. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
+      <div class="audit-content">Motion tokens, components, patterns. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
     </div>
   </div>
 </div>
@@ -382,11 +403,11 @@
 <div class="footer">
   <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
   <div class="footer-tags">
-    <span class="footer-tag">69 tokens audited</span>
-    <span class="footer-tag">41 PASS</span>
-    <span class="footer-tag">8 GAP</span>
-    <span class="footer-tag">12 MISSING</span>
-    <span class="footer-tag">29 actions</span>
+    <span class="footer-tag">82 tokens audited</span>
+    <span class="footer-tag">49 PASS</span>
+    <span class="footer-tag">10 GAP</span>
+    <span class="footer-tag">13 MISSING</span>
+    <span class="footer-tag">33 actions</span>
     <span class="footer-tag">April 2026</span>
   </div>
 </div>
@@ -2123,6 +2144,289 @@
 </div>
 
 </div><!-- /tab-panel iconography -->
+
+<!-- ============================================================ -->
+<!-- TAB: SPACING                                                  -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="spacing">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-title">Spacing Token Audit</div>
+    <div class="section-desc">Each area of the spacing system reviewed against world-class benchmarks. 13 tokens on a strict 4px grid with gap-only convention, 3-tier hierarchy, and component recipes.</div>
+  </div>
+
+  <!-- a. Spacing Scale -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Spacing Scale</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">13 tokens on strict 4px grid: <code>4 &middot; 8 &middot; 12 &middot; 16 &middot; 24 &middot; 32 &middot; 40 &middot; 48 &middot; 64 &middot; 72 &middot; 84</code>. Computed widths rounded to 4px grid. Comprehensive range from tight inline (4px) to extra-large layout (84px).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The 4px grid alignment matches typography line-heights and radius tokens &mdash; the entire system is on the same grid. 13 tokens is thorough, covering every use case from inline elements to hero sections.</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 uses 4px grid with ~12 spacing values. Carbon uses 8px grid (2,4,8,12,16,24,32,40,48) &mdash; 9 values. Polaris uses 4px grid with ~10 values. Apple HIG uses 8pt grid. Wiom's 13 is at the upper end but justified by the component recipes.</div>
+  </div>
+
+  <!-- b. Spacing Hierarchy -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Spacing Hierarchy</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">3-tier hierarchy: <strong>Tight (4-8px)</strong> = one unit (icon+label, title+subtitle, checkbox+text). <strong>Medium (12-16px)</strong> = same section (list items, card internals, input+label). <strong>Loose (24-32px+)</strong> = separate concerns (section to section, content to CTA). Decision test: "If I removed everything else, would these two elements still make sense together?" Yes &rarr; tight, Kind of &rarr; medium, No &rarr; loose.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The decision test is practical and memorable. The visual comparison (same spacing everywhere vs hierarchy-driven) is excellent documentation. This teaches the principle, not just the values.</div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon documents spacing hierarchy. Polaris has spacing guidelines. Wiom's decision test and visual comparison are more actionable than most.</div>
+  </div>
+
+  <!-- c. Gap-Only Convention -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Gap-Only Convention</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Parents own sibling spacing via <code>gap</code> / <code>itemSpacing</code>. Children own internal spacing via <code>padding</code>. <strong>Margins never used.</strong> Platform mapping: Figma (<code>itemSpacing</code>), Compose (<code>Arrangement.spacedBy()</code>), Flutter (<code>spacing</code> / <code>SizedBox</code>), CSS (<code>gap</code>). Visual example: removing Card B with gap-only = auto-adjusts, no orphan spacing.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The "gap-only, no margins ever" rule is a strong architectural decision that prevents orphan spacing and last-child exceptions. The platform mapping table is practical for cross-platform teams. The visual example (Card B removed, gap auto-adjusts) makes the benefit concrete.</div>
+    <div class="bench"><strong>Benchmark:</strong> Some systems recommend gap-only but few mandate it this strictly. This is above benchmark in clarity and enforcement.</div>
+  </div>
+
+  <!-- d. Touch Targets -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Touch Targets</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">3-tier system: <strong>Action (48px)</strong> = delete, edit, share, close, menu, back, nav tabs. <strong>Navigation (32px)</strong> = expand, sort, arrows, pagination, filters. <strong>Info (24px)</strong> = help, tooltip, status indicators. "Not all icons need 48px" &mdash; context determines tier. Buttons hit 48px naturally via padding.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The 3-tier approach is more nuanced than "everything must be 48px." The note that buttons naturally hit 48px via padding prevents unnecessary overrides. Aligns with iconography foundation (WiomIconButton handles touch targets).</div>
+    <div class="bench"><strong>Benchmark:</strong> MD3 requires 48dp minimum for all interactive elements. Apple HIG requires 44pt. Wiom's 3-tier approach allows 32px and 24px for lower-priority targets &mdash; pragmatic but below strict guidelines.</div>
+    <div class="warn"><strong>Note:</strong> The 32px and 24px tiers should be validated against WCAG 2.5.8 (Target Size Enhanced) which recommends 44px minimum. The 24px info tier is below this threshold.</div>
+  </div>
+
+  <!-- e. Screen Layout -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Screen Layout</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Fixed 360&times;720px (Android). Status bar: 24px. Safe area (bottom): +16px on last component. Default screen margins: 16px. Chat screen margins: 12px. App bar to content: 16px. Content sections: 32px. Between cards: 16px. To bottom nav/sticky: 16px.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The fixed viewport decision simplifies spacing &mdash; no responsive breakpoints needed for mobile. Safe area as "+16px on last component" rather than separate frame is clean.</div>
+    <div class="warn"><strong>Note:</strong> No tablet or landscape spacing documented. 360&times;720px is phone-only.</div>
+  </div>
+
+  <!-- f. Component Recipes -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Component Recipes</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Quick-lookup tables for 6 components:
+        <strong>Cards</strong> &mdash; outer 16px, nested 0px L/R, section gap 16px, title-sub 8px, icon-text 12px, content-CTA 16px.
+        <strong>List Items</strong> &mdash; H 16px, V 12px, between items 8px, icon-text 12px, primary-secondary 4px.
+        <strong>Input Fields</strong> &mdash; H 16px, V 12px, label-input 8px, input-helper 4px, stacked inputs 16px.
+        <strong>Bottom Sheets</strong> &mdash; all padding 24px, title-content 16px, content-buttons 24px, between buttons 12px.
+        <strong>Snackbar</strong> &mdash; H 16px, V 12px, text-action 12px, bottom offset 16px.
+        <strong>Chips</strong> &mdash; H 8px, V 4px, icon-label 4px, between chips 8px.
+      </div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> These recipes eliminate guesswork for the 6 most common components. Each references tokens from the scale. The note "detailed specs live in separate component skill files" keeps this as a foundation reference, not a component spec.</div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon documents component spacing. Polaris has component-level spacing guidance. Wiom's recipe format is more scannable than most.</div>
+  </div>
+
+  <!-- g. Rules & Anti-Patterns -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Rules &amp; Anti-Patterns</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content"><strong>6 Do's:</strong> tokens only, parents own sibling spacing, hierarchy-driven, card padding=16px always, safe area baked in, nav tabs=48px min.
+        <strong>5 Don'ts:</strong> arbitrary pixels, inconsistent same-level padding, ignoring line-height, spacing by eye, fixed spacing no responsive, 8px everywhere.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> The "ignoring line-height" anti-pattern is rare and important &mdash; 8px gap + 4px built-in line-height = 12px visual gap. Most systems don't call this out.</div>
+  </div>
+
+  <!-- h. Responsive Spacing -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Responsive Spacing</div>
+      <span class="v v-miss">MISSING</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Fixed 360&times;720px viewport. No responsive breakpoints.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">No tablet spacing. No landscape mode. No documentation on how spacing adapts for larger screens. The Don't section even flags "64px desktop margins without reducing for mobile" as an anti-pattern, but doesn't provide the responsive solution.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon has responsive spacing (sm/md/lg/xl breakpoints). Polaris has responsive spacing tokens. MD3 has compact/medium/expanded layouts.</div>
+    <div class="suggest"><strong>Suggestion:</strong> MEDIUM priority for now (Wiom is mobile-first). Document: "spacing values are fixed for 360px mobile viewport. Tablet/landscape spacing TBD."</div>
+  </div>
+
+  <!-- i. Semantic Spacing Tokens -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Semantic Spacing Tokens</div>
+      <span class="v v-gap">GAP</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Numeric tokens only: <code>space-4</code>, <code>space-8</code>, <code>space-12</code>, <code>space-16</code>, etc.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">No semantic/alias layer. E.g., <code>space-card-padding</code> &rarr; <code>space-16</code>, <code>space-section-gap</code> &rarr; <code>space-32</code>, <code>space-inline-tight</code> &rarr; <code>space-4</code>. The typography system has semantic tokens (<code>type.heading.m</code>), color has semantic tokens (<code>color.text.primary</code>), but spacing is raw numeric only.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Carbon uses semantic spacing aliases (<code>$spacing-05</code> &rarr; 1rem = 16px, plus <code>$layout-01</code>, <code>$layout-02</code> for layout-specific). Polaris has semantic spacing (<code>--p-space-card-padding</code>). Tailwind uses semantic names (<code>p-4</code> = 16px).</div>
+    <div class="suggest"><strong>Suggestion:</strong> MEDIUM priority. Add semantic aliases for the most common patterns: <code>space-card-padding</code>, <code>space-screen-margin</code>, <code>space-section-gap</code>, <code>space-inline-tight</code>.</div>
+  </div>
+
+  <!-- j. Negative Spacing -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Negative Spacing</div>
+      <span class="v v-gap">GAP</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">No negative spacing tokens documented.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Missing</div>
+      <div class="audit-content">Overlapping elements (overlapping avatars, stacked cards with negative margin, pull-up effects). Some UI patterns require controlled negative spacing.</div>
+    </div>
+    <div class="bench"><strong>Benchmark:</strong> Tailwind has negative spacing utilities. Most design systems handle this via component-specific specs rather than tokens.</div>
+    <div class="suggest"><strong>Suggestion:</strong> LOW priority. Document in component specs rather than adding negative spacing tokens.</div>
+  </div>
+
+  <!-- k. Documentation -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Documentation</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Complete reference with scale, hierarchy principle, gap-only convention, touch targets, screen layout, component recipes, rules, quick reference card. Benchmarked against 5 systems (MD3, Apple HIG, Carbon, Ant Design, Atlassian).</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Comprehensive documentation that teaches principles, not just values. The decision test, visual comparisons, and platform mapping are above benchmark for documentation quality.</div>
+  </div>
+
+</div>
+
+<!-- SPACING TOKEN REFERENCE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Token Reference</div>
+    <div class="section-title">Spacing Tokens (13)</div>
+    <div class="section-desc">All 13 spacing tokens on a strict 4px grid, with usage context.</div>
+  </div>
+
+  <table class="token-ref">
+    <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td class="token-name">space-4</td><td class="token-val">4px</td><td>Icon+label, checkbox+text, tight inline</td></tr>
+      <tr><td class="token-name">space-8</td><td class="token-val">8px</td><td>Related groups, chip padding, title+subtitle</td></tr>
+      <tr><td class="token-name">space-12</td><td class="token-val">12px</td><td>List items, component internals, label+input</td></tr>
+      <tr><td class="token-name">space-16</td><td class="token-val">16px</td><td>Card padding, screen margins, heading+body</td></tr>
+      <tr><td class="token-name">space-24</td><td class="token-val">24px</td><td>Sections within card, dialog padding</td></tr>
+      <tr><td class="token-name">space-32</td><td class="token-val">32px</td><td>Between content blocks, between sections</td></tr>
+      <tr><td class="token-name">space-40</td><td class="token-val">40px</td><td>Section breaks on a page</td></tr>
+      <tr><td class="token-name">space-48</td><td class="token-val">48px</td><td>Touch target height, page-level vertical margins</td></tr>
+      <tr><td class="token-name">space-64</td><td class="token-val">64px</td><td>Large layout gaps, hero section padding</td></tr>
+      <tr><td class="token-name">space-72</td><td class="token-val">72px</td><td>Hero/section padding</td></tr>
+      <tr><td class="token-name">space-84</td><td class="token-val">84px</td><td>Extra-large layout areas</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SPACING BENCHMARKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Spacing vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's spacing foundation compares to the best design systems in the industry.</div>
+  </div>
+
+  <table class="bench-table">
+    <thead><tr><th>Wiom Spacing</th><th>World-Class Benchmark</th><th style="width:140px">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="sys">13 tokens on 4px grid</td><td>MD3 ~12 (4px), Carbon 9 (8px), Polaris ~10 (4px)</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">3-tier hierarchy (tight/medium/loose)</td><td>Carbon documents hierarchy, Polaris similar</td><td><span class="v v-pass">ALIGNED &mdash; decision test is more actionable</span></td></tr>
+      <tr><td class="sys">Gap-only, no margins ever</td><td>Few systems mandate this strictly</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">3-tier touch targets (48/32/24)</td><td>MD3 requires 48dp for all</td><td><span class="v v-pass">ALIGNED (pragmatic &mdash; 24dp info tier debatable)</span></td></tr>
+      <tr><td class="sys">Fixed 360&times;720px layout</td><td>N/A &mdash; mobile-specific</td><td><span class="v v-pass">ALIGNED for mobile-first</span></td></tr>
+      <tr><td class="sys">Component spacing recipes</td><td>Carbon, Polaris document component spacing</td><td><span class="v v-pass">ALIGNED &mdash; recipe format is more scannable</span></td></tr>
+      <tr><td class="sys">Line-height anti-pattern documented</td><td>No benchmark calls this out</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Platform mapping (Figma/Compose/Flutter/CSS)</td><td>Few systems provide platform equivalents</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">No responsive spacing breakpoints</td><td>Carbon, Polaris have responsive spacing</td><td><span class="v v-miss">MISSING</span></td></tr>
+      <tr><td class="sys">No semantic spacing aliases</td><td>Carbon, Polaris have semantic aliases</td><td><span class="v v-gap">GAP</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SPACING ACTIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Spacing Prioritized Actions</div>
+    <div class="section-desc">Sorted by impact. MEDIUM items add completeness. LOW items are nice-to-have.</div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
+    <tbody>
+      <tr><td><span class="action-num">1</span></td><td>Add semantic spacing aliases for common patterns (<code>space-card-padding</code>, <code>space-screen-margin</code>, <code>space-section-gap</code>, <code>space-inline-tight</code>)</td><td>Architecture</td><td><span class="p p-med">MEDIUM</span></td><td>Carbon <code>$layout-01</code>, Polaris <code>--p-space-card-padding</code></td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Document responsive spacing strategy for tablet/landscape</td><td>Responsiveness</td><td><span class="p p-med">MEDIUM</span></td><td>Carbon responsive breakpoints, Polaris responsive spacing</td></tr>
+      <tr><td><span class="action-num">3</span></td><td>Validate 24px info-tier touch target against WCAG 2.5.8 (44px recommended)</td><td>Accessibility</td><td><span class="p p-low">LOW</span></td><td>WCAG 2.5.8 recommends 44px minimum target size</td></tr>
+      <tr><td><span class="action-num">4</span></td><td>Document negative spacing approach (component-specific or tokens)</td><td>Completeness</td><td><span class="p p-low">LOW</span></td><td>Tailwind has negative utilities; most systems handle in component specs</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- SPACING GAPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Spacing Gaps &amp; Ambiguities</div>
+    <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
+  </div>
+  <div class="audit-card">
+    <ul class="gap-list">
+      <li><span class="gap-bullet">&bull;</span>No responsive spacing for tablet or landscape &mdash; 360&times;720px is phone-only</li>
+      <li><span class="gap-bullet">&bull;</span>No semantic spacing aliases &mdash; spacing is the only foundation without a semantic layer</li>
+      <li><span class="gap-bullet">&bull;</span>24px info-tier touch target is below WCAG 2.5.8 recommended 44px minimum</li>
+      <li><span class="gap-bullet">&bull;</span>No documentation on spacing in dark mode (typically unchanged, but no explicit confirmation)</li>
+      <li><span class="gap-bullet">&bull;</span><code>space-72</code> and <code>space-84</code> usage is vague ("hero/section padding", "extra-large layout areas") &mdash; could benefit from specific examples</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /tab-panel spacing -->
 
 </div><!-- /.page -->
 
