@@ -22,12 +22,16 @@
   /* Layout */
   .page{max-width:1120px;margin:0 auto;padding:0 48px 80px}
 
-  /* Section nav */
-  .section-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,251,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--n200);padding:0;margin:0 0 0;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  /* Section nav — tab style */
+  .section-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,251,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--n200);padding:0;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .section-nav::-webkit-scrollbar{display:none}
-  .section-nav a{flex:0 0 auto;padding:12px 20px;font-size:12px;font-weight:600;color:var(--n500);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s}
-  .section-nav a:hover{color:var(--n900)}
+  .section-nav a{flex:0 0 auto;padding:14px 22px;font-size:13px;font-weight:600;color:var(--n400);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s;cursor:pointer;user-select:none}
+  .section-nav a:hover{color:var(--n700)}
   .section-nav a.active{color:var(--n900);border-bottom-color:var(--n900)}
+
+  /* Tab panels — show/hide */
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
 
   /* Top bar */
   .topbar{padding:16px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--n200);margin-bottom:0}
@@ -194,17 +198,17 @@
 
 <!-- SECTION NAV -->
 <nav class="section-nav" id="nav">
-  <a href="#summary">Summary</a>
-  <a href="#typography">Typography</a>
-  <a href="#color">Color</a>
-  <a href="#benchmarks">Benchmarks</a>
-  <a href="#actions">Actions</a>
-  <a href="#reviewed">Reviewed</a>
-  <a href="#gaps">Gaps</a>
+  <a data-tab="summary" class="active">Summary</a>
+  <a data-tab="typography">Typography</a>
+  <a data-tab="color">Color</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero" id="summary">
+<!-- ============================================================ -->
+<!-- TAB: SUMMARY                                                  -->
+<!-- ============================================================ -->
+<div class="tab-panel active" data-tab="summary">
+
+<div class="hero">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
   <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens) and color system (39 semantic tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
@@ -264,12 +268,59 @@
   </table>
 </div>
 
-<div class="divider"></div>
-
-<!-- DETAILED AUDIT — TYPOGRAPHY -->
+<!-- WHAT WAS REVIEWED -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow" id="typography">Detailed Findings</div>
+    <div class="section-eyebrow">Scope</div>
+    <div class="section-title">What Was Reviewed</div>
+  </div>
+  <div class="audit-card">
+    <div class="audit-row">
+      <div class="audit-label">Typography Input</div>
+      <div class="audit-content"><code>wiom_typography_foundation.html</code> &mdash; complete typography foundation document including token table, type specimen (EN + HI), legacy audit, migration mapping, rollout plan, design principles, and industry benchmarks.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Color Input</div>
+      <div class="audit-content"><code>index.html</code> &mdash; color system document with 5 tabs (Response, Token Spec, Usage Guide, Decision Log, Legacy Audit). 33 primitives + 39 semantic tokens across 8 groups.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Typography Tokens Found</div>
+      <div class="audit-content">13 semantic typography tokens across 6 groups (Display, Heading, Title, Body, Label, Meta).</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Color Tokens Found</div>
+      <div class="audit-content">39 semantic color tokens across 8 groups (Brand, Text, Surface, Border, Positive, Negative, Warning, Info) + Overlay. 33 primitive tokens for theming layer.</div>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">Not Reviewed (not provided)</div>
+      <div class="audit-content">Spacing tokens, elevation tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
+  <div class="footer-tags">
+    <span class="footer-tag">52 tokens audited</span>
+    <span class="footer-tag">11 PASS</span>
+    <span class="footer-tag">4 GAP</span>
+    <span class="footer-tag">6 MISSING</span>
+    <span class="footer-tag">18 actions</span>
+    <span class="footer-tag">April 2026</span>
+  </div>
+</div>
+
+</div><!-- /tab-panel summary -->
+
+<!-- ============================================================ -->
+<!-- TAB: TYPOGRAPHY                                               -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="typography">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
     <div class="section-title">Typography Token Audit</div>
     <div class="section-desc">Each area of the typography system reviewed against world-class benchmarks.</div>
   </div>
@@ -487,10 +538,117 @@
 
 <div class="divider"></div>
 
-<!-- DETAILED AUDIT — COLOR -->
+<!-- TYPOGRAPHY BENCHMARKS -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow" id="color">Detailed Findings</div>
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Typography vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's typography foundation compares to the best design systems in the industry.</div>
+  </div>
+
+  <table class="bench-table">
+    <thead><tr><th>Wiom</th><th>World-Class Benchmark</th><th style="width:120px">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="sys">13 semantic tokens, 8 sizes</td><td>Carbon 14, Polaris ~13, MD3 15, Primer ~12</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Semantic naming (<code>type.role.size</code>)</td><td>All Tier 1 systems use role-based naming</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">4px grid line-heights</td><td>10/10 systems enforce 4px or 8px grid</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Weight-as-role-signal</td><td>Fluent 2, Carbon use similar approach</td><td><span class="v v-pass">ALIGNED</span></td></tr>
+      <tr><td class="sys">Bilingual scale (Hindi + English)</td><td>No benchmark &mdash; Wiom leads here</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Budget device optimization</td><td>No benchmark &mdash; Wiom leads here</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
+      <tr><td class="sys">Migration documentation</td><td>Carbon-level depth (best in class)</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">EXCEEDS MOST</span></td></tr>
+      <tr><td class="sys">Flat token architecture</td><td>Carbon, MD3 use 3-layer (primitive &rarr; alias &rarr; component)</td><td><span class="v v-gap">GAP</span></td></tr>
+      <tr><td class="sys">No letter-spacing tokens</td><td>MD3, Carbon, Apple HIG define per step</td><td><span class="v v-miss">MISSING</span></td></tr>
+      <tr><td class="sys">No responsive / dynamic type</td><td>Apple HIG Dynamic Type, Fluent responsive ramp</td><td><span class="v v-miss">MISSING</span></td></tr>
+      <tr><td class="sys">No font-scaling a11y docs</td><td>Apple HIG, Paste (Twilio)</td><td><span class="v v-gap">GAP</span></td></tr>
+      <tr><td class="sys">No type-color mapping</td><td>Carbon, MD3, Polaris</td><td><span class="v v-miss">MISSING</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- TYPOGRAPHY ACTIONS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Typography Prioritized Actions</div>
+    <div class="section-desc">Sorted by impact. HIGH items close the gap to world-class. MEDIUM items add polish. LOW items are nice-to-have.</div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
+    <tbody>
+      <tr><td><span class="action-num">1</span></td><td>Add letter-spacing tokens per type scale step (negative for display/heading, zero for body, positive for label/meta)</td><td>Token completeness</td><td><span class="p p-high">HIGH</span></td><td>MD3 defines per role; Carbon per step; Apple HIG recommends tighter for display</td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Document token architecture layers: primitive &rarr; alias &rarr; component. Map component bindings (button.text &rarr; type.label.l, etc.)</td><td>Token architecture</td><td><span class="p p-high">HIGH</span></td><td>Carbon, MD3, Fluent 2 all use 3-layer token architecture</td></tr>
+      <tr><td><span class="action-num">3</span></td><td>Document Android font-scaling behavior &mdash; <code>sp</code> vs <code>dp</code> strategy, accessibility scaling response</td><td>Accessibility</td><td><span class="p p-high">HIGH</span></td><td>Apple HIG Dynamic Type; directly affects budget Android users</td></tr>
+      <tr><td><span class="action-num">4</span></td><td>Define semantic text-color tokens (<code>text.primary</code>, <code>text.secondary</code>, <code>text.disabled</code>, <code>text.error</code>) mapped to type roles</td><td>Color &times; Typography</td><td><span class="p p-high">HIGH</span></td><td>Carbon <code>$text-primary/secondary</code>; MD3 <code>on-surface</code> variants</td></tr>
+      <tr><td><span class="action-num">5</span></td><td>Document responsive typography strategy &mdash; breakpoints, tablet behavior, large screens</td><td>Responsiveness</td><td><span class="p p-med">MEDIUM</span></td><td>Fluent 2 responsive ramp; Apple HIG size classes</td></tr>
+      <tr><td><span class="action-num">6</span></td><td>Add dark-mode typography guidance &mdash; weight adjustment for light-on-dark, contrast considerations</td><td>Accessibility</td><td><span class="p p-med">MEDIUM</span></td><td>Paste (Twilio) documents dark-mode type behavior; some systems bump weight +100</td></tr>
+      <tr><td><span class="action-num">7</span></td><td>Add line-length / measure constraints per token (max-width for body text readability)</td><td>Readability</td><td><span class="p p-med">MEDIUM</span></td><td>Carbon, Polaris include max-width guidance for body text</td></tr>
+      <tr><td><span class="action-num">8</span></td><td>Document truncation / overflow patterns per token (single-line ellipsis, multi-line clamp)</td><td>Patterns</td><td><span class="p p-med">MEDIUM</span></td><td>Polaris, Atlassian document text-overflow behavior per component</td></tr>
+      <tr><td><span class="action-num">9</span></td><td>Add paragraph spacing tokens (margin-bottom per type role for vertical rhythm)</td><td>Spacing</td><td><span class="p p-low">LOW</span></td><td>Carbon defines <code>$spacing-*</code> per text block; Polaris has component margins</td></tr>
+      <tr><td><span class="action-num">10</span></td><td>Consider display.m (e.g., 40px) for onboarding/marketing &mdash; D2_40_Regular was merged, may still be needed</td><td>Scale completeness</td><td><span class="p p-low">LOW</span></td><td>MD3 has 3 display sizes; evaluate if 1 display token is sufficient</td></tr>
+      <tr><td><span class="action-num">11</span></td><td>Document text decoration patterns (link underline, strikethrough, emphasis)</td><td>Completeness</td><td><span class="p p-low">LOW</span></td><td>Primer, Carbon document decoration tokens</td></tr>
+      <tr><td><span class="action-num">12</span></td><td>Document font loading strategy for slow connections on budget Android</td><td>Performance</td><td><span class="p p-low">LOW</span></td><td>No direct benchmark &mdash; practical concern for target audience</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- TYPOGRAPHY GAPS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Typography Gaps &amp; Ambiguities</div>
+    <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
+  </div>
+  <div class="audit-card">
+    <ul class="gap-list">
+      <li><span class="gap-bullet">&bull;</span>No Figma file provided &mdash; Figma-to-code parity is claimed but not verifiable from this input</li>
+      <li><span class="gap-bullet">&bull;</span>Kotlin code token implementation is mentioned but not shown &mdash; can't verify 1:1 mapping</li>
+      <li><span class="gap-bullet">&bull;</span>"D2_40_Regular &rarr; Merge into display tier or expressive-only" &mdash; the resolution is ambiguous. Is display.m (40px) being added or not?</li>
+      <li><span class="gap-bullet">&bull;</span>Budget Android testing for weight gap (&ge;200 rule) is referenced but the source data isn't cited &mdash; whose testing informed this?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TYPOGRAPHY TOKEN REFERENCE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Reference</div>
+    <div class="section-title">Typography Token Table</div>
+  </div>
+  <table class="token-ref">
+    <thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="token-name">type.display.l</td><td class="token-val">48px</td><td class="token-val">Bold 700</td><td class="token-val">56px</td><td>Display</td></tr>
+      <tr><td class="token-name">type.heading.xl</td><td class="token-val">32px</td><td class="token-val">Bold 700</td><td class="token-val">40px</td><td>Heading</td></tr>
+      <tr><td class="token-name">type.heading.l</td><td class="token-val">24px</td><td class="token-val">Bold 700</td><td class="token-val">32px</td><td>Heading</td></tr>
+      <tr><td class="token-name">type.heading.m</td><td class="token-val">20px</td><td class="token-val">Bold 700</td><td class="token-val">28px</td><td>Heading</td></tr>
+      <tr><td class="token-name">type.title.l</td><td class="token-val">20px</td><td class="token-val">Medium 500</td><td class="token-val">28px</td><td>Title</td></tr>
+      <tr><td class="token-name">type.title.s</td><td class="token-val">16px</td><td class="token-val">Bold 700</td><td class="token-val">24px</td><td>Title</td></tr>
+      <tr><td class="token-name">type.body.l</td><td class="token-val">16px</td><td class="token-val">Regular 400</td><td class="token-val">24px</td><td>Body</td></tr>
+      <tr><td class="token-name">type.body.m</td><td class="token-val">14px</td><td class="token-val">Regular 400</td><td class="token-val">20px</td><td>Body</td></tr>
+      <tr><td class="token-name">type.body.s</td><td class="token-val">12px</td><td class="token-val">Regular 400</td><td class="token-val">16px</td><td>Body</td></tr>
+      <tr><td class="token-name">type.label.l</td><td class="token-val">16px</td><td class="token-val">SemiBold 600</td><td class="token-val">24px</td><td>Label</td></tr>
+      <tr><td class="token-name">type.label.m</td><td class="token-val">14px</td><td class="token-val">SemiBold 600</td><td class="token-val">20px</td><td>Label</td></tr>
+      <tr><td class="token-name">type.label.s</td><td class="token-val">12px</td><td class="token-val">SemiBold 600</td><td class="token-val">16px</td><td>Label</td></tr>
+      <tr><td class="token-name">type.meta.xs</td><td class="token-val">10px</td><td class="token-val">Regular 400</td><td class="token-val">16px</td><td>Meta (restricted)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /tab-panel typography -->
+
+<!-- ============================================================ -->
+<!-- TAB: COLOR                                                    -->
+<!-- ============================================================ -->
+<div class="tab-panel" data-tab="color">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Detailed Findings</div>
     <div class="section-title">Color Token Audit</div>
     <div class="section-desc">Each area of the color system reviewed against world-class benchmarks.</div>
   </div>
@@ -563,6 +721,19 @@
     <div class="bench"><strong>Benchmark:</strong> Carbon targets WCAG AAA. Paste (Twilio) documents per-component contrast. Wiom's AA documentation is solid; AAA would be aspirational for future.</div>
   </div>
 
+  <!-- Decision Trees -->
+  <div class="audit-card">
+    <div class="audit-card-header">
+      <div class="audit-card-title">Decision Trees</div>
+      <span class="v v-pass">PASS</span>
+    </div>
+    <div class="audit-row">
+      <div class="audit-label">What's Here</div>
+      <div class="audit-content">Text, surface, border, and interaction state selection documented with clear decision trees.</div>
+    </div>
+    <div class="strength"><strong>Strength:</strong> Decision trees reduce guesswork for developers. This is a mature pattern seen in Carbon and Polaris.</div>
+  </div>
+
   <!-- Document Consistency -->
   <div class="audit-card">
     <div class="audit-card-header">
@@ -581,7 +752,7 @@
         <strong>&bull;</strong> Usage Guide shows Warning as orange (<code>#FF8000</code>) + separate Caution (yellow) &mdash; merged in Decision 006<br>
         <strong>&bull;</strong> Usage Guide shows <code>brand.secondary</code> as <code>#443152</code> &mdash; changed to <code>#4A1535</code> in Decision 008<br>
         <strong>&bull;</strong> Usage Guide shows <code>text.secondary</code> as <code>#352D42</code> &mdash; changed to <code>#5C5570</code> in Decision 004<br>
-        <strong>&bull;</strong> Quick reference table lists 38 tokens + 1 gradient, but header says 39 semantic tokens
+        <strong>&bull;</strong> Quick reference table lists 38 tokens + 1 gradient effect vs header's "39 semantic tokens"
       </div>
     </div>
     <div class="warn"><strong>This is the most critical finding.</strong> A developer reading the Usage Guide will implement wrong tokens. The Usage Guide must be updated to match the Token Spec post-decisions.</div>
@@ -676,33 +847,17 @@
 
 <div class="divider"></div>
 
-<!-- BENCHMARK SUMMARY -->
+<!-- COLOR BENCHMARKS -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow" id="benchmarks">Benchmark Comparison</div>
-    <div class="section-title">Wiom vs World-Class Systems</div>
-    <div class="section-desc">How Wiom's typography and color foundations compare to the best design systems in the industry.</div>
+    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-title">Color vs World-Class Systems</div>
+    <div class="section-desc">How Wiom's color foundation compares to the best design systems in the industry.</div>
   </div>
 
   <table class="bench-table">
     <thead><tr><th>Wiom</th><th>World-Class Benchmark</th><th style="width:120px">Status</th></tr></thead>
     <tbody>
-      <!-- Typography rows -->
-      <tr class="group-header"><td colspan="3">Typography</td></tr>
-      <tr><td class="sys">13 semantic tokens, 8 sizes</td><td>Carbon 14, Polaris ~13, MD3 15, Primer ~12</td><td><span class="v v-pass">ALIGNED</span></td></tr>
-      <tr><td class="sys">Semantic naming (<code>type.role.size</code>)</td><td>All Tier 1 systems use role-based naming</td><td><span class="v v-pass">ALIGNED</span></td></tr>
-      <tr><td class="sys">4px grid line-heights</td><td>10/10 systems enforce 4px or 8px grid</td><td><span class="v v-pass">ALIGNED</span></td></tr>
-      <tr><td class="sys">Weight-as-role-signal</td><td>Fluent 2, Carbon use similar approach</td><td><span class="v v-pass">ALIGNED</span></td></tr>
-      <tr><td class="sys">Bilingual scale (Hindi + English)</td><td>No benchmark &mdash; Wiom leads here</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
-      <tr><td class="sys">Budget device optimization</td><td>No benchmark &mdash; Wiom leads here</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">UNIQUE STRENGTH</span></td></tr>
-      <tr><td class="sys">Migration documentation</td><td>Carbon-level depth (best in class)</td><td><span class="v" style="background:var(--bl100);color:var(--bl700)">EXCEEDS MOST</span></td></tr>
-      <tr><td class="sys">Flat token architecture</td><td>Carbon, MD3 use 3-layer (primitive &rarr; alias &rarr; component)</td><td><span class="v v-gap">GAP</span></td></tr>
-      <tr><td class="sys">No letter-spacing tokens</td><td>MD3, Carbon, Apple HIG define per step</td><td><span class="v v-miss">MISSING</span></td></tr>
-      <tr><td class="sys">No responsive / dynamic type</td><td>Apple HIG Dynamic Type, Fluent responsive ramp</td><td><span class="v v-miss">MISSING</span></td></tr>
-      <tr><td class="sys">No font-scaling a11y docs</td><td>Apple HIG, Paste (Twilio)</td><td><span class="v v-gap">GAP</span></td></tr>
-      <tr><td class="sys">No type-color mapping</td><td>Carbon, MD3, Polaris</td><td><span class="v v-miss">MISSING</span></td></tr>
-      <!-- Color rows -->
-      <tr class="group-header"><td colspan="3">Color</td></tr>
       <tr><td class="sys">39 semantic tokens, 8 groups</td><td>Carbon ~80, Polaris ~45, MD3 ~50</td><td><span class="v v-pass">ALIGNED</span></td></tr>
       <tr><td class="sys">Semantic naming (<code>color.family.role</code>)</td><td>All Tier 1 systems use role-based</td><td><span class="v v-pass">ALIGNED</span></td></tr>
       <tr><td class="sys">2-tier architecture (primitive &rarr; semantic)</td><td>Carbon, MD3, Polaris, Atlassian</td><td><span class="v v-pass">ALIGNED</span></td></tr>
@@ -720,109 +875,38 @@
 
 <div class="divider"></div>
 
-<!-- PRIORITIZED ACTION LIST -->
+<!-- COLOR ACTIONS -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow" id="actions">What to Do Next</div>
-    <div class="section-title">Prioritized Action List</div>
+    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-title">Color Prioritized Actions</div>
     <div class="section-desc">Sorted by impact. HIGH items close the gap to world-class. MEDIUM items add polish. LOW items are nice-to-have.</div>
   </div>
 
   <table class="action-table">
     <thead><tr><th style="width:36px">#</th><th>Action</th><th style="width:140px">Area</th><th style="width:60px">Priority</th><th style="width:200px">Benchmark Reference</th></tr></thead>
     <tbody>
-      <!-- Typography actions -->
-      <tr><td><span class="action-num">1</span></td><td>Add letter-spacing tokens per type scale step (negative for display/heading, zero for body, positive for label/meta)</td><td>Token completeness</td><td><span class="p p-high">HIGH</span></td><td>MD3 defines per role; Carbon per step; Apple HIG recommends tighter for display</td></tr>
-      <tr><td><span class="action-num">2</span></td><td>Document token architecture layers: primitive &rarr; alias &rarr; component. Map component bindings (button.text &rarr; type.label.l, etc.)</td><td>Token architecture</td><td><span class="p p-high">HIGH</span></td><td>Carbon, MD3, Fluent 2 all use 3-layer token architecture</td></tr>
-      <tr><td><span class="action-num">3</span></td><td>Document Android font-scaling behavior &mdash; <code>sp</code> vs <code>dp</code> strategy, accessibility scaling response</td><td>Accessibility</td><td><span class="p p-high">HIGH</span></td><td>Apple HIG Dynamic Type; directly affects budget Android users</td></tr>
-      <tr><td><span class="action-num">4</span></td><td>Define semantic text-color tokens (<code>text.primary</code>, <code>text.secondary</code>, <code>text.disabled</code>, <code>text.error</code>) mapped to type roles</td><td>Color &times; Typography</td><td><span class="p p-high">HIGH</span></td><td>Carbon <code>$text-primary/secondary</code>; MD3 <code>on-surface</code> variants</td></tr>
-      <tr><td><span class="action-num">5</span></td><td>Document responsive typography strategy &mdash; breakpoints, tablet behavior, large screens</td><td>Responsiveness</td><td><span class="p p-med">MEDIUM</span></td><td>Fluent 2 responsive ramp; Apple HIG size classes</td></tr>
-      <tr><td><span class="action-num">6</span></td><td>Add dark-mode typography guidance &mdash; weight adjustment for light-on-dark, contrast considerations</td><td>Accessibility</td><td><span class="p p-med">MEDIUM</span></td><td>Paste (Twilio) documents dark-mode type behavior; some systems bump weight +100</td></tr>
-      <tr><td><span class="action-num">7</span></td><td>Add line-length / measure constraints per token (max-width for body text readability)</td><td>Readability</td><td><span class="p p-med">MEDIUM</span></td><td>Carbon, Polaris include max-width guidance for body text</td></tr>
-      <tr><td><span class="action-num">8</span></td><td>Document truncation / overflow patterns per token (single-line ellipsis, multi-line clamp)</td><td>Patterns</td><td><span class="p p-med">MEDIUM</span></td><td>Polaris, Atlassian document text-overflow behavior per component</td></tr>
-      <tr><td><span class="action-num">9</span></td><td>Add paragraph spacing tokens (margin-bottom per type role for vertical rhythm)</td><td>Spacing</td><td><span class="p p-low">LOW</span></td><td>Carbon defines <code>$spacing-*</code> per text block; Polaris has component margins</td></tr>
-      <tr><td><span class="action-num">10</span></td><td>Consider display.m (e.g., 40px) for onboarding/marketing &mdash; D2_40_Regular was merged, may still be needed</td><td>Scale completeness</td><td><span class="p p-low">LOW</span></td><td>MD3 has 3 display sizes; evaluate if 1 display token is sufficient</td></tr>
-      <tr><td><span class="action-num">11</span></td><td>Document text decoration patterns (link underline, strikethrough, emphasis)</td><td>Completeness</td><td><span class="p p-low">LOW</span></td><td>Primer, Carbon document decoration tokens</td></tr>
-      <tr><td><span class="action-num">12</span></td><td>Document font loading strategy for slow connections on budget Android</td><td>Performance</td><td><span class="p p-low">LOW</span></td><td>No direct benchmark &mdash; practical concern for target audience</td></tr>
-      <!-- Color actions -->
-      <tr><td><span class="action-num">13</span></td><td>Sync Usage Guide tab with Token Spec &mdash; remove <code>text.tertiary</code>, update Warning/Caution, fix <code>brand.secondary</code> hex</td><td>Document consistency</td><td><span class="p p-high">HIGH</span></td><td>Internal &mdash; document divergence causes wrong implementation</td></tr>
-      <tr><td><span class="action-num">14</span></td><td>Define dark mode primitive palette + semantic overrides</td><td>Dark mode</td><td><span class="p p-high">HIGH</span></td><td>Carbon, MD3, Fluent 2 all ship light + dark</td></tr>
-      <tr><td><span class="action-num">15</span></td><td>Add data visualization color palette (6-8 categorical)</td><td>Data viz</td><td><span class="p p-med">MEDIUM</span></td><td>Carbon (14 colors), Polaris, Stripe, Groww</td></tr>
-      <tr><td><span class="action-num">16</span></td><td>Add opacity tokens (<code>opacity.disabled</code>, <code>opacity.overlay</code>, <code>opacity.hover-tint</code>)</td><td>Completeness</td><td><span class="p p-med">MEDIUM</span></td><td>Fluent 2, Carbon define opacity scales</td></tr>
-      <tr><td><span class="action-num">17</span></td><td>Add <code>positive.primary-hover</code> and <code>positive.primary-pressed</code> if confirm-style buttons are planned</td><td>Interaction states</td><td><span class="p p-low">LOW</span></td><td>Minor gap &mdash; only needed if green buttons exist</td></tr>
-      <tr><td><span class="action-num">18</span></td><td>Validate <code>brand.primary</code> (<code>#D9008D</code>) on white at small sizes on budget Android devices</td><td>Accessibility</td><td><span class="p p-low">LOW</span></td><td>Document self-identifies this risk &mdash; validate with real device testing</td></tr>
+      <tr><td><span class="action-num">1</span></td><td>Sync Usage Guide tab with Token Spec &mdash; remove <code>text.tertiary</code>, update Warning/Caution, fix <code>brand.secondary</code> hex</td><td>Document consistency</td><td><span class="p p-high">HIGH</span></td><td>Internal &mdash; document divergence causes wrong implementation</td></tr>
+      <tr><td><span class="action-num">2</span></td><td>Define dark mode primitive palette + semantic overrides</td><td>Dark mode</td><td><span class="p p-high">HIGH</span></td><td>Carbon, MD3, Fluent 2 all ship light + dark</td></tr>
+      <tr><td><span class="action-num">3</span></td><td>Add data visualization color palette (6-8 categorical)</td><td>Data viz</td><td><span class="p p-med">MEDIUM</span></td><td>Carbon (14 colors), Polaris, Stripe, Groww</td></tr>
+      <tr><td><span class="action-num">4</span></td><td>Add opacity tokens (<code>opacity.disabled</code>, <code>opacity.overlay</code>, <code>opacity.hover-tint</code>)</td><td>Completeness</td><td><span class="p p-med">MEDIUM</span></td><td>Fluent 2, Carbon define opacity scales</td></tr>
+      <tr><td><span class="action-num">5</span></td><td>Add <code>positive.primary-hover</code> and <code>positive.primary-pressed</code> if confirm-style buttons are planned</td><td>Interaction states</td><td><span class="p p-low">LOW</span></td><td>Minor gap &mdash; only needed if green buttons exist</td></tr>
+      <tr><td><span class="action-num">6</span></td><td>Validate <code>brand.primary</code> (<code>#D9008D</code>) on white at small sizes on budget Android devices</td><td>Accessibility</td><td><span class="p p-low">LOW</span></td><td>Document self-identifies this risk &mdash; validate with real device testing</td></tr>
     </tbody>
   </table>
 </div>
 
 <div class="divider"></div>
 
-<!-- WHAT WAS REVIEWED -->
+<!-- COLOR GAPS -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow" id="reviewed">Scope</div>
-    <div class="section-title">What Was Reviewed</div>
-  </div>
-  <div class="audit-card">
-    <div class="audit-row">
-      <div class="audit-label">Typography Input</div>
-      <div class="audit-content"><code>wiom_typography_foundation.html</code> &mdash; complete typography foundation document including token table, type specimen (EN + HI), legacy audit, migration mapping, rollout plan, design principles, and industry benchmarks.</div>
-    </div>
-    <div class="audit-row">
-      <div class="audit-label">Color Input</div>
-      <div class="audit-content"><code>index.html</code> &mdash; color system document with 5 tabs (Response, Token Spec, Usage Guide, Decision Log, Legacy Audit). 33 primitives + 39 semantic tokens across 8 groups.</div>
-    </div>
-    <div class="audit-row">
-      <div class="audit-label">Typography Tokens Found</div>
-      <div class="audit-content">13 semantic typography tokens across 6 groups (Display, Heading, Title, Body, Label, Meta).</div>
-    </div>
-
-    <table class="token-ref">
-      <thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Group</th></tr></thead>
-      <tbody>
-        <tr><td class="token-name">type.display.l</td><td class="token-val">48px</td><td class="token-val">Bold 700</td><td class="token-val">56px</td><td>Display</td></tr>
-        <tr><td class="token-name">type.heading.xl</td><td class="token-val">32px</td><td class="token-val">Bold 700</td><td class="token-val">40px</td><td>Heading</td></tr>
-        <tr><td class="token-name">type.heading.l</td><td class="token-val">24px</td><td class="token-val">Bold 700</td><td class="token-val">32px</td><td>Heading</td></tr>
-        <tr><td class="token-name">type.heading.m</td><td class="token-val">20px</td><td class="token-val">Bold 700</td><td class="token-val">28px</td><td>Heading</td></tr>
-        <tr><td class="token-name">type.title.l</td><td class="token-val">20px</td><td class="token-val">Medium 500</td><td class="token-val">28px</td><td>Title</td></tr>
-        <tr><td class="token-name">type.title.s</td><td class="token-val">16px</td><td class="token-val">Bold 700</td><td class="token-val">24px</td><td>Title</td></tr>
-        <tr><td class="token-name">type.body.l</td><td class="token-val">16px</td><td class="token-val">Regular 400</td><td class="token-val">24px</td><td>Body</td></tr>
-        <tr><td class="token-name">type.body.m</td><td class="token-val">14px</td><td class="token-val">Regular 400</td><td class="token-val">20px</td><td>Body</td></tr>
-        <tr><td class="token-name">type.body.s</td><td class="token-val">12px</td><td class="token-val">Regular 400</td><td class="token-val">16px</td><td>Body</td></tr>
-        <tr><td class="token-name">type.label.l</td><td class="token-val">16px</td><td class="token-val">SemiBold 600</td><td class="token-val">24px</td><td>Label</td></tr>
-        <tr><td class="token-name">type.label.m</td><td class="token-val">14px</td><td class="token-val">SemiBold 600</td><td class="token-val">20px</td><td>Label</td></tr>
-        <tr><td class="token-name">type.label.s</td><td class="token-val">12px</td><td class="token-val">SemiBold 600</td><td class="token-val">16px</td><td>Label</td></tr>
-        <tr><td class="token-name">type.meta.xs</td><td class="token-val">10px</td><td class="token-val">Regular 400</td><td class="token-val">16px</td><td>Meta (restricted)</td></tr>
-      </tbody>
-    </table>
-
-    <div class="audit-row">
-      <div class="audit-label">Color Tokens Found</div>
-      <div class="audit-content">39 semantic color tokens across 8 groups (Brand, Text, Surface, Border, Positive, Negative, Warning, Info) + Overlay. 33 primitive tokens for theming layer.</div>
-    </div>
-
-    <div class="audit-row">
-      <div class="audit-label">Not Reviewed (not provided)</div>
-      <div class="audit-content">Spacing tokens, elevation tokens, motion tokens, components, patterns, iconography. These are NOT REVIEWED &mdash; not "missing." Share them separately for a full system audit.</div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- GAPS / AMBIGUITIES -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-eyebrow" id="gaps">For the Record</div>
-    <div class="section-title">Gaps &amp; Ambiguities in the Input</div>
+    <div class="section-eyebrow">For the Record</div>
+    <div class="section-title">Color Gaps &amp; Ambiguities</div>
     <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
   </div>
   <div class="audit-card">
     <ul class="gap-list">
-      <li><span class="gap-bullet">&bull;</span>No Figma file provided &mdash; Figma-to-code parity is claimed but not verifiable from this input</li>
-      <li><span class="gap-bullet">&bull;</span>Kotlin code token implementation is mentioned but not shown &mdash; can't verify 1:1 mapping</li>
-      <li><span class="gap-bullet">&bull;</span>"D2_40_Regular &rarr; Merge into display tier or expressive-only" &mdash; the resolution is ambiguous. Is display.m (40px) being added or not?</li>
-      <li><span class="gap-bullet">&bull;</span>Budget Android testing for weight gap (&ge;200 rule) is referenced but the source data isn't cited &mdash; whose testing informed this?</li>
       <li><span class="gap-bullet">&bull;</span>The Usage Guide tab and Token Spec tab show different token states &mdash; audit was based on Token Spec (post-decisions) as source of truth</li>
       <li><span class="gap-bullet">&bull;</span>Quick reference table lists 38 tokens + 1 gradient effect vs header's "39 semantic tokens" &mdash; minor count discrepancy</li>
       <li><span class="gap-bullet">&bull;</span>Figma implementation not provided &mdash; can't verify token-to-Figma parity</li>
@@ -832,41 +916,27 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  <div><strong>System Lens v1.0</strong> &mdash; Design System Audit &middot; Wiom Design System</div>
-  <div class="footer-tags">
-    <span class="footer-tag">52 tokens audited</span>
-    <span class="footer-tag">11 PASS</span>
-    <span class="footer-tag">4 GAP</span>
-    <span class="footer-tag">6 MISSING</span>
-    <span class="footer-tag">18 actions</span>
-    <span class="footer-tag">April 2026</span>
-  </div>
-</div>
+</div><!-- /tab-panel color -->
 
-</div>
+</div><!-- /.page -->
+
 <script>
-// Smooth scroll offset for sticky nav
-document.querySelectorAll('.section-nav a').forEach(a=>{
-  a.addEventListener('click',e=>{
+// Tab switching
+document.querySelectorAll('.section-nav a').forEach(function(link) {
+  link.addEventListener('click', function(e) {
     e.preventDefault();
-    const id=a.getAttribute('href').slice(1);
-    const el=document.getElementById(id);
-    if(el){const y=el.getBoundingClientRect().top+window.pageYOffset-56;window.scrollTo({top:y,behavior:'smooth'});}
+    var tab = this.getAttribute('data-tab');
+    // Remove active from all links and panels
+    document.querySelectorAll('.section-nav a').forEach(function(a) { a.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    // Activate clicked link and matching panel
+    this.classList.add('active');
+    var panel = document.querySelector('.tab-panel[data-tab="' + tab + '"]');
+    if (panel) panel.classList.add('active');
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
-// Active state on scroll
-const sections=['summary','typography','color','benchmarks','actions','reviewed','gaps'];
-const navLinks=document.querySelectorAll('.section-nav a');
-window.addEventListener('scroll',()=>{
-  let current='summary';
-  for(const id of sections){
-    const el=document.getElementById(id);
-    if(el&&el.getBoundingClientRect().top<=80)current=id;
-  }
-  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
-},{passive:true});
 </script>
 </body>
 </html>
