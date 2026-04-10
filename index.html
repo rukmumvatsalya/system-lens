@@ -22,6 +22,13 @@
   /* Layout */
   .page{max-width:1120px;margin:0 auto;padding:0 48px 80px}
 
+  /* Section nav */
+  .section-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,251,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--n200);padding:0;margin:0 0 0;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .section-nav::-webkit-scrollbar{display:none}
+  .section-nav a{flex:0 0 auto;padding:12px 20px;font-size:12px;font-weight:600;color:var(--n500);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s}
+  .section-nav a:hover{color:var(--n900)}
+  .section-nav a.active{color:var(--n900);border-bottom-color:var(--n900)}
+
   /* Top bar */
   .topbar{padding:16px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--n200);margin-bottom:0}
   .topbar-left{display:flex;align-items:center;gap:10px}
@@ -185,8 +192,19 @@
   </div>
 </div>
 
+<!-- SECTION NAV -->
+<nav class="section-nav" id="nav">
+  <a href="#summary">Summary</a>
+  <a href="#typography">Typography</a>
+  <a href="#color">Color</a>
+  <a href="#benchmarks">Benchmarks</a>
+  <a href="#actions">Actions</a>
+  <a href="#reviewed">Reviewed</a>
+  <a href="#gaps">Gaps</a>
+</nav>
+
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="summary">
   <div class="hero-eyebrow">Audit Report</div>
   <h1>Wiom Design System Foundation Review</h1>
   <div class="hero-desc">A structured audit of the Wiom Next typography system (13 semantic tokens) and color system (39 semantic tokens) against world-class design systems &mdash; identifying what's strong, what's missing, and what to prioritize next.</div>
@@ -251,7 +269,7 @@
 <!-- DETAILED AUDIT — TYPOGRAPHY -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-eyebrow" id="typography">Detailed Findings</div>
     <div class="section-title">Typography Token Audit</div>
     <div class="section-desc">Each area of the typography system reviewed against world-class benchmarks.</div>
   </div>
@@ -472,7 +490,7 @@
 <!-- DETAILED AUDIT — COLOR -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">Detailed Findings</div>
+    <div class="section-eyebrow" id="color">Detailed Findings</div>
     <div class="section-title">Color Token Audit</div>
     <div class="section-desc">Each area of the color system reviewed against world-class benchmarks.</div>
   </div>
@@ -661,7 +679,7 @@
 <!-- BENCHMARK SUMMARY -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">Benchmark Comparison</div>
+    <div class="section-eyebrow" id="benchmarks">Benchmark Comparison</div>
     <div class="section-title">Wiom vs World-Class Systems</div>
     <div class="section-desc">How Wiom's typography and color foundations compare to the best design systems in the industry.</div>
   </div>
@@ -705,7 +723,7 @@
 <!-- PRIORITIZED ACTION LIST -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">What to Do Next</div>
+    <div class="section-eyebrow" id="actions">What to Do Next</div>
     <div class="section-title">Prioritized Action List</div>
     <div class="section-desc">Sorted by impact. HIGH items close the gap to world-class. MEDIUM items add polish. LOW items are nice-to-have.</div>
   </div>
@@ -742,7 +760,7 @@
 <!-- WHAT WAS REVIEWED -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">Scope</div>
+    <div class="section-eyebrow" id="reviewed">Scope</div>
     <div class="section-title">What Was Reviewed</div>
   </div>
   <div class="audit-card">
@@ -795,7 +813,7 @@
 <!-- GAPS / AMBIGUITIES -->
 <div class="section">
   <div class="section-header">
-    <div class="section-eyebrow">For the Record</div>
+    <div class="section-eyebrow" id="gaps">For the Record</div>
     <div class="section-title">Gaps &amp; Ambiguities in the Input</div>
     <div class="section-desc">Things that limited this audit &mdash; surfaced, not guessed.</div>
   </div>
@@ -828,5 +846,27 @@
 </div>
 
 </div>
+<script>
+// Smooth scroll offset for sticky nav
+document.querySelectorAll('.section-nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=a.getAttribute('href').slice(1);
+    const el=document.getElementById(id);
+    if(el){const y=el.getBoundingClientRect().top+window.pageYOffset-56;window.scrollTo({top:y,behavior:'smooth'});}
+  });
+});
+// Active state on scroll
+const sections=['summary','typography','color','benchmarks','actions','reviewed','gaps'];
+const navLinks=document.querySelectorAll('.section-nav a');
+window.addEventListener('scroll',()=>{
+  let current='summary';
+  for(const id of sections){
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<=80)current=id;
+  }
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
+},{passive:true});
+</script>
 </body>
 </html>
